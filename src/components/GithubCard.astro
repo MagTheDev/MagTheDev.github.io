@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon'
+---
+<a href="https://github.com/MagTheDev">
+    <div class="github-container">
+        <div class="github-icon-container">
+            <Icon name="fa:github" s/>
+        </div>
+        
+        <div class="username-container">
+            MagTheDev
+        </div>
+        
+    </div>
+</a>
+
+<style>
+
+    :root {
+        --color-primary: #4f39fa;
+        --color-secondary: #da62c4;
+        --color-base-white: #f5f0f0;
+    }
+
+    .github-container {
+
+        position: relative;
+
+        margin-top: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 6.5rem;
+        width: 17.5rem;
+        
+        font-size: 32px;
+
+        background-color: #e9e9ed;
+
+        transition: all 0.3s ease-in-out;
+
+        background: 
+            linear-gradient(var(--color-base-white), var(--color-base-white)) padding-box,
+            linear-gradient(to right, var(--color-primary), var(--color-secondary)) border-box;
+        border-radius: 10px;
+        border: 4px solid transparent;
+
+        box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+
+    .github-container::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .github-container:hover {
+        transform: translateY(-5px);
+    }
+
+    github.github-container::after {
+        opacity: 1;
+    }
+
+
+    .github-container:hover::after {
+        opacity: 1;
+    }
+
+    .github-icon-container {
+        margin-right: 20px;
+    }
+
+    .username-container {
+
+    }  
+
+    [astro-icon] {
+        color: #4f39fa;
+        height: 64px;
+        width: 64px;
+    }
+
+</style>

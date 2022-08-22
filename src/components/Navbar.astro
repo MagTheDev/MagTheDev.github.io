@@ -1,0 +1,99 @@
+---
+    import "../styles/constants.css";
+
+    export interface Props {
+        page: string;
+    }
+
+    const { page } = Astro.props as Props;
+---
+
+
+<div class="navbar-container dark border-gradient">
+    <div class={`home ${page === "home" ? "highlight" : ""}`}>
+        {page.charAt(0).toLocaleUpperCase() + page.slice(1)}
+    </div>
+    <div class="about-container">
+        <div class={`item ${page === "about" ? "highlight" : ""}`}>
+            About
+        </div>
+        <div class={`item ${page === "contact" ? "highlight" : ""}`}>
+            Contact
+        </div>
+        <div class={`item ${page === "resume" ? "highlight" : ""}`}>
+            Resume
+        </div>
+        <div class={`item ${page === "" ? "highlight" : ""}`}>
+            Projects
+        </div>
+    </div>
+</div>
+
+
+
+<style lang="scss">
+
+    .navbar-container {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 4rem;
+        width: 100%;
+        background-color: var(--primary-darker);
+        color: var(--text);
+
+        border-bottom: 5px solid;
+        border-image-slice: 1;
+        transition: all cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: pulse 5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+			border-image-source: linear-gradient(to right, var(--accent), var(--accent-darker));
+		}
+		50% {
+			border-image-source: linear-gradient(to right, var(--accent-darker), var(--accent));
+           
+		}
+        100% {
+            border-image-source: linear-gradient(to right, var(--accent), var(--accent-darker));
+        }
+        
+    }
+
+    .about-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-right: 12.5rem;
+        width: 100%;
+    }
+
+    .home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 5rem;
+        width: 5rem;
+    } 
+    
+    .item {
+        margin-left: 1rem;
+        padding: 10px;
+        border: 1px solid var(--accent);
+        border-radius: 5px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    .highlight {
+        font-size: 32px;
+        font-weight: bold;
+        text-decoration: underline var(--accent) dashed;
+    }
+
+</style>

@@ -1,0 +1,15 @@
+.dark {
+    --primary: #313638;
+    --primary-darker: #262A2C;
+    --text: #f5f0f0;
+    --editor-background: #282c34;
+    --terminal-background: #282c34;
+    --accent-darker: #4f39fa;
+    --accent: #da62c4;
+}
+
+.light {
+    --primary: #f5f0f0;
+    --primary-darker: #dadada;
+    --text: #313638;
+}

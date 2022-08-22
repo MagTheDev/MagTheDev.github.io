@@ -1,0 +1,70 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Terminal from "../components/Terminal.astro";
+
+import "../styles/constants.css";
+
+---
+
+
+
+<Layout title="Landing page">
+
+    <Navbar page="home" />
+
+    <div class="container dark">
+
+        <div class="tech">
+
+            <div class="editor-container">
+                <div class="editor">
+                    HSJAHDJKSHDJAKD
+                </div>
+            </div>
+
+            <Terminal></Terminal>
+
+        </div>
+
+        <div class="greeting-container">
+            HELLO
+        </div>
+
+    </div>
+
+</Layout>
+
+<style>
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center; */
+        justify-content: space-between;
+        height: 100vh;
+        background-color: var(--primary);
+    }
+    
+    .greeting-container {
+        width: 50%
+    }
+
+    .tech {
+        margin-left: 5rem;
+        width: 50%;
+        height: 100%;
+    }
+
+    .editor {
+        background-color: var(--editor-background);
+        width: 98%;
+    }
+    .editor-container {
+        margin-top: 5rem;
+        width: 100%;
+        height: 50%;
+    }
+
+
+</style>

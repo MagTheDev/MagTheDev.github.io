@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="MagTheDev - Home">
+    <div class="container">
+        <div class="greeting-container">
+            <h1 class="greeting">
+                <span class="highlight">Hello,</span> I'm Jake
+            </h1>
+            <p class="desc">
+                <span class="blink">&gt;</span> A Software Developer
+            </p>
+        </div>
+        <div class="response-container desktop">
+            
+        </div>
+    </div>
+</Layout>
+
+<style>
+
+    h1,
+    h2,
+    h3,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .container {
+        padding: 2rem 1em;
+        width: 90%;
+        margin: 0 auto;
+
+        display: flex;
+
+    }
+
+    .greeting {
+        font-size: calc(var(--font-size-xxl) + 2rem);
+    }
+
+    .greeting-container {
+        margin-right: 25px;
+    }
+
+    .highlight {
+        background: -webkit-linear-gradient(
+            -30deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .desc {
+        font-style: italic;
+        font-weight: 600;
+        margin-left: 3%;
+        color: #d3d3d3;
+    }
+
+    .blink {
+        animation: blink infinite 2s;
+    }
+
+    .response-container {
+        /* This will get overridden by media query */
+        display: none;
+
+        max-width: 45%;
+        margin-top: 4.5rem;
+
+    }
+
+    @media only screen and (min-width: 800px) {
+        .desktop {
+            display: block;
+        }
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>

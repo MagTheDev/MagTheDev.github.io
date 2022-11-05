@@ -60,7 +60,7 @@ import { Icon } from 'astro-icon'
         right: -2px;
         bottom: -2px;
         z-index: -1;
-        background: linear-gradient(-35deg,  var(--color-accent-secondary), var(--color-accent-terciary));
+        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
         border-radius: 0.5rem;
         opacity: 0;
         transition: all 100ms ease-in-out;
@@ -70,9 +70,23 @@ import { Icon } from 'astro-icon'
         opacity: 1;
     }
 
-    /*
-            linear-gradient(35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
-    */
+    .link-container::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: -2;
+        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
+        filter: blur(10px);
+        opacity: 0;
+        transition: all 100ms ease-in-out;
+    }
+
+    .link-container:hover::before {
+        opacity: 1;
+    }
 
     .icon-container {
         width: 2rem;

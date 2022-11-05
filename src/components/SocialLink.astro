@@ -13,7 +13,7 @@ import { Icon } from 'astro-icon'
     <a href={props.url}>
         <div class="link-container">
             <div class="icon-container">
-                <Icon name={`fa:${props.icon}`}/>
+                <Icon name={props.icon}/>
             </div>
             <p class="social-name">{props.name}</p>
         </div>
@@ -35,7 +35,7 @@ import { Icon } from 'astro-icon'
         position: relative;
 
         aspect-ratio: 2.5 / 1;
-        width: 7rem;
+        width: 8rem;
         
         display: flex;
         justify-content: center;
@@ -100,7 +100,8 @@ import { Icon } from 'astro-icon'
     }
 
     [astro-icon] {
-        color: var(--color-border);
+        color: var(--color-gray)
+
     }
 
 

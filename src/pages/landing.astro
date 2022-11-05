@@ -17,29 +17,35 @@ import SocialLink from "../components/SocialLink.astro";
                     <SocialLink
                         name="Github"
                         url="https://google.com"
-                        icon="github"
+                        icon="ph:github-logo"
                     />
                 </div>
                 <div class="nav-item">
                     <SocialLink
-                        name="Github"
+                        name="Me"
                         url="https://google.com"
-                        icon="github"
+                        icon="ph:finn-the-human"
                     />
                 </div>
                 <div class="nav-item">
                     <SocialLink
-                        name="Github"
+                        name="My Work"
                         url="https://google.com"
-                        icon="github"
+                        icon="ph:projector-screen"
+                    />
+                </div>
+                <div class="nav-item">
+                    <SocialLink
+                        name="Resume"
+                        url="https://google.com"
+                        icon="ph:address-book"
                     />
                 </div>
             </div>
-        </div>
+            <div class="about">
 
-        <!-- <div class="response-container desktop">
-            
-        </div> -->
+            </div>
+        </div>
     </div>
 </Layout>
 
@@ -95,11 +101,13 @@ import SocialLink from "../components/SocialLink.astro";
     }
 
     @media (min-width: 45em) {
+
+        
         .nav-container {
             display: grid;
             gap: 1.5rem;
 
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             justify-content: center;
             align-items: center;
         }

@@ -11,7 +11,7 @@ const { title } = Astro.props as Props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Homepage of MagTheDev">
+		<meta name="description" content="Homepage of MagTheDev" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -28,19 +28,17 @@ const { title } = Astro.props as Props;
 		--font-size-xxl: clamp(5.44rem, 3.38vw + 2.85rem, 5rem);
 
 		--color-text: white;
-		--color-bg: #1A1A1B;
-		--color-border: #393E46;
-		
+		--color-bg: #1a1a1b;
+		--color-border: #393e46;
+
 		--color-off-white: #d3d3d3;
-		--color-gray: #A6A6A6;
+		--color-gray: #a6a6a6;
 		--color-yellow: #fdd835;
 		--color-orange: #fc9435;
 
 		--color-accent-primary: #6200ea;
 		--color-accent-secondary: #ec407a;
 		--color-accent-terciary: var(--color-yellow);
-
-
 	}
 
 	html {
@@ -48,16 +46,13 @@ const { title } = Astro.props as Props;
 		font-size: var(--font-size-base);
 		color: var(--color-text);
 		background-color: var(--color-bg);
-
 	}
 
 	body {
 		margin: 0;
 		margin-left: 30px;
 		overflow-x: hidden;
-
 	}
-
 
 	:global(h1) {
 		font-size: var(--font-size-xl);
@@ -68,7 +63,7 @@ const { title } = Astro.props as Props;
 	}
 
 	:global(code) {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>

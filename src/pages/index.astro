@@ -14,12 +14,23 @@ import Layout from '../layouts/Layout.astro';
 			For now you can still check out my github
 		</div>
 		<GithubCard></GithubCard>
+
+		<p class="exclamation">But I want to see what you're working on!</p>
+		<div id="smtn">
+			<p class="reply">Well, if you insist...</p>
+			<a href="/wip/landing"><button>Here</button></a>
+		</div>
+
 	</main>
 </Layout>
 
 <style>
 	:root {
 		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+	}
+
+	p {
+		margin: 0;
 	}
 
 	h1 {
@@ -31,6 +42,24 @@ import Layout from '../layouts/Layout.astro';
 		margin: auto;
 		padding: 1em;
 		max-width: 80vw;
+	}
+
+	#smtn {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+
+	.exclamation {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-top: 20px;
+	}
+
+	.reply {
+		font-size: 0.8rem;
+		font-weight: 600;
+		font-style: italic;
 	}
 
 	.text-gradient {

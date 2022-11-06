@@ -1,0 +1,13 @@
+---
+
+export interface Props {
+    name: string,
+    url: string,
+    img_url: string | null
+}
+
+import { Icon } from "astro-icon";
+
+const props = Astro.props as Props
+
+---

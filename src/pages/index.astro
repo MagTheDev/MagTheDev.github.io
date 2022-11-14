@@ -1,20 +1,19 @@
 ---
-import GithubCard from '../components/GithubCard.astro';
-import SocialLink from '../components/SocialLink.astro';
-import Layout from '../layouts/Layout.astro';
-
+import GithubCard from "../components/GithubCard.astro";
+import SocialLink from "../components/SocialLink.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="MagTheDev - Home">
 	<main>
-		<h1><span class="text-gradient">Uh Oh</span></h1>	
+		<h1><span class="text-gradient">Uh Oh</span></h1>
 		<div class="under-construction">
 			This page is still under construction
-		</div>	
+		</div>
 		<div class="under-construction subtext">
 			For now you can still check out my github
 		</div>
-		<GithubCard></GithubCard>
+		<GithubCard />
 		<p class="exclamation">But I want to see what you're working on!</p>
 		<div id="smtn">
 			<p class="reply">Well, if you insist...</p>
@@ -37,7 +36,6 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	main {
-		
 		margin: auto;
 		padding: 1em;
 		max-width: 80vw;
@@ -92,5 +90,4 @@ import Layout from '../layouts/Layout.astro';
 		font-size: 24px;
 		margin-left: 10px;
 	}
-
 </style>

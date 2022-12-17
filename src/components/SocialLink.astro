@@ -1,26 +1,25 @@
 ---
 export interface Props {
-    name: string,
-    url: string,
-    icon: string
+    name: string;
+    url: string;
+    icon: string;
 }
 
-const props = Astro.props as Props
-import { Icon } from 'astro-icon'
-
+const props = Astro.props as Props;
+import { Icon } from "astro-icon";
 ---
+
 <div>
     <a href={props.url}>
         <div class="link-container">
             <div class="icon-container">
-                <Icon name={props.icon}/>
+                <Icon name={props.icon} />
             </div>
             <p class="social-name">{props.name}</p>
         </div>
     </a>
 </div>
 <style>
-
     p {
         margin: 0;
         color: var(--color-text);
@@ -32,20 +31,20 @@ import { Icon } from 'astro-icon'
     }
 
     .link-container {
-
         position: relative;
 
         aspect-ratio: 2.5 / 1;
         width: 8rem;
-        
+
         display: flex;
         justify-content: center;
         align-items: center;
 
         padding: 10px;
 
+        gap: 20px;
+
         background-color: var(--color-bg);
-        
 
         background-clip: padding-box;
         border: solid 1px var(--color-border);
@@ -54,14 +53,19 @@ import { Icon } from 'astro-icon'
     }
     /*This took me SOOOO long to figure out */
     .link-container::after {
-        content: '';
+        content: "";
         position: absolute;
         top: -2px;
         left: -2px;
         right: -2px;
         bottom: -2px;
         z-index: -1;
-        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
+        background: linear-gradient(
+            -35deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary),
+            var(--color-accent-terciary)
+        );
         border-radius: 0.5rem;
         opacity: 0;
         transition: all 100ms ease-in-out;
@@ -72,14 +76,19 @@ import { Icon } from 'astro-icon'
     }
     /* This handles the blur */
     .link-container::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0px;
         left: 0px;
         right: 0px;
         bottom: 0px;
         z-index: -2;
-        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
+        background: linear-gradient(
+            -35deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary),
+            var(--color-accent-terciary)
+        );
         filter: blur(10px);
         opacity: 0;
         transition: all 100ms ease-in-out;
@@ -92,13 +101,16 @@ import { Icon } from 'astro-icon'
     .icon-container {
         width: 2rem;
         height: 2rem;
-        padding-right: 20px;
-
     }
 
+<<<<<<< HEAD
+=======
+    .social-name {
+        font-weight: 600;
+    }
+
+>>>>>>> master
     [astro-icon] {
         color: var(--color-gray);
     }
-
 </style>
-

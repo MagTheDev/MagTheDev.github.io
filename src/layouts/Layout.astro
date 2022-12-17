@@ -11,8 +11,9 @@ const { title } = Astro.props as Props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Homepage of MagTheDev">
+		<meta name="description" content="Homepage of MagTheDev" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="preload" href="/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -21,6 +22,25 @@ const { title } = Astro.props as Props;
 	</body>
 </html>
 <style>
+
+	@font-face {
+		font-family: 'Mona Sans';
+		src:
+			url('/Mona-Sans.woff2') format('woff2 supports variations'),
+			url('/Mona-Sans.woff2') format('woff2-variations');
+		font-weight: 200 900;
+		font-stretch: 75% 125%;
+	}
+
+	@font-face {
+		font-family: 'Hubot Sans';
+		src:
+			url('/Hubot-Sans.woff2') format('woff2 supports variations'),
+			url('/Hubot-Sans.woff2') format('woff2-variations');
+		font-weight: 200 900;
+		font-stretch: 75% 125%;
+	}
+
 	:root {
 		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
@@ -28,34 +48,30 @@ const { title } = Astro.props as Props;
 		--font-size-xxl: clamp(5.44rem, 3.38vw + 2.85rem, 5rem);
 
 		--color-text: white;
-		--color-bg: #1A1A1B;
-		--color-border: #393E46;
-		
+		--color-bg: #1a1a1b;
+		--color-border: #393e46;
+
 		--color-off-white: #d3d3d3;
-		--color-gray: #A6A6A6;
+		--color-gray: #a6a6a6;
 		--color-yellow: #fdd835;
 		--color-orange: #fc9435;
 
 		--color-accent-primary: #6200ea;
 		--color-accent-secondary: #ec407a;
 		--color-accent-terciary: var(--color-yellow);
-
-
 	}
 
 	html {
-		font-family: Helvetica, system-ui, sans-serif;
+		font-family: 'Mona Sans', Helvetica, system-ui, sans-serif;
 		font-size: var(--font-size-base);
 		color: var(--color-text);
 		background-color: var(--color-bg);
-
 	}
 
 	body {
 		margin: 0;
 		margin-left: 30px;
 		overflow-x: hidden;
-
 	}
 
 /* 
@@ -68,7 +84,7 @@ const { title } = Astro.props as Props;
 	}
 
 	:global(code) {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>

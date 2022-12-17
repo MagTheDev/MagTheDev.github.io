@@ -1,8 +1,114 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import { Icon } from 'astro-icon'
+let age = new Date().getFullYear() - 2006;
 ---
 
-<Layout title="MagTheDev - About">
+<script>
+    document.getElementById("back")!.addEventListener("click", () => {
+    window.history.back();
+});
+</script>
 
+<Layout title="MagTheDev - About">
+    <div class="container">
+        <div class="about-container">
+            <div class="heading-container">
+                <h1><span class="numbering">01.</span> Me</h1>
+                <hr class="separator" />
+            </div>
+            <div>
+                <p class="text">
+                    Hey, I'm Jake, I'm {age} years old, and currently studying at
+                    a Gymnasium. <br> I'm an aspiring Software Developer. <br>My interest
+                    in Software Development started back in 2019, when my friend
+                    introduced me to python. <br>Fast forward to now, and I'm still learning,
+                    and I'm still loving it. 
+                </p>
+            </div>
+            <div class="heading-container">
+                <h1><span class="numbering">02.</span> Work</h1>
+                <hr class="separator" />
+            </div>
+            <div>
+                <p class="text">I'm currently interning for Ineduco. Other than that, I have a bunch of toy projects on my Github.</p>
+            </div>
+            <div class="back" id="back">
+                <Icon name="ph:caret-left" size="2rem" />
+                <div class="back-text"><b>Back</b></div>
+            </div>
+        </div>
+    </div>
 </Layout>
+
+<style>
+    .container {
+        display: flex;
+        max-width: 100%;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .about-container {
+        width: 70%;
+    }
+
+    .numbering {
+        font-family: 'Hubot Sans';
+        background-image: var(--color-gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .text {
+        font-size: 1.1rem;
+        line-height: 120%;
+        margin-left: 1rem;
+        max-width: 60%;
+        line-height: 1.1rem;
+        font-weight: 500;
+
+    }
+
+    .heading-container {
+        display: flex;
+        flex-direction: flex-start;
+        align-items: center;
+        margin-bottom: 1rem;
+        max-width: 80%;
+        gap: 1rem;
+    }
+
+    .separator {
+        flex-grow: 1;
+        color: var(--color-border);
+    }
+    .back {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        transform: translateX(-1rem);
+        cursor: pointer;
+    }
+
+
+    [astro-icon] {
+        color: var(--color-gray);
+        transition: all 0.1s ease-in;
+    }
+    [astro-icon]:hover {
+        color: var(--color-primary);
+    }
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>

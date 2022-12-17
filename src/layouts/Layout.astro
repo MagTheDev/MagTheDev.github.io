@@ -59,10 +59,49 @@ const { title } = Astro.props as Props;
 		--color-accent-primary: #6200ea;
 		--color-accent-secondary: #ec407a;
 		--color-accent-terciary: var(--color-yellow);
+<<<<<<< Updated upstream
+=======
+
+		--color-gradient:	-webkit-linear-gradient(
+								-30deg,
+								var(--color-accent-primary),
+								var(--color-accent-secondary)
+							);
+	--color-gradient-secondary:	-webkit-linear-gradient(
+		-30deg,
+		var(--color-accent-secondary),
+		var(--color-accent-terciary)
+	);
+>>>>>>> Stashed changes
 	}
 
+	@font-face {
+		font-family: "Mona Sans";
+		src: url("/Mona-Sans.woff2") format("woff2 supports variations"),
+			url("/Mona-Sans.woff2") format("woff2-variations");
+		font-weight: 200 900;
+		font-stretch: 75% 125%;
+	}
+	@font-face {
+		font-family: "Hubot Sans";
+		src: url("/Hubot-Sans.woff2") format("woff2 supports variations"),
+			url("/Hubot-Sans.woff2") format("woff2-variations");
+		font-weight: 200 900;
+		font-stretch: 75% 125%;
+	}
+	@font-face {
+		font-family: "Pixelated";
+		src: url("Pixelated.otf") format("opentype supports variations"),
+			url("Pixelated.otf") format("opentype-variations");
+		font-weight: 200 900;
+		font-stretch: 75% 125%;
+	}
 	html {
+<<<<<<< Updated upstream
 		font-family: 'Mona Sans', Helvetica, system-ui, sans-serif;
+=======
+		font-family: 'Mona Sans', Helvetica;
+>>>>>>> Stashed changes
 		font-size: var(--font-size-base);
 		color: var(--color-text);
 		background-color: var(--color-bg);
@@ -74,10 +113,6 @@ const { title } = Astro.props as Props;
 		overflow-x: hidden;
 	}
 
-/* 
-	:global(h1) {
-		font-size: var(--font-size-xl);
-	} */
 
 	:global(h2) {
 		font-size: var(--font-size-lg);
@@ -87,4 +122,7 @@ const { title } = Astro.props as Props;
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
 			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+
+
 </style>
+

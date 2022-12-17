@@ -1,63 +1,49 @@
 ---
 export interface Props {
-<<<<<<< HEAD
-    name: string,
-    url: string,
-    img_url: string,
-=======
     name: string;
     url: string;
-    img_url: string | null;
->>>>>>> master
+    img_url: string;
 }
 
 import { Icon } from "astro-icon";
 
-<<<<<<< HEAD
-const props = Astro.props as Props
-
+const props = Astro.props as Props;
 ---
 
 <a href={props.url}>
-<div class="project-container">
-
-    <div class="project-header" style={`background-image: url("${props.img_url}")`}></div>
+    <div class="project-container">
+        <div
+            class="project-header"
+            style={`background-image: url("${props.img_url}")`}
+        >
+        </div>
         <div class="project-name-sub">
             {props.name}
-            <slot/>
+            <slot />
         </div>
-        
     </div>
-
-</div>
 </a>
 
 <style>
-
     a {
-
         text-decoration: none;
-
     }
 
     .project-header {
-
-
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
         filter: brightness(80%);
         transition: all 100ms ease-in-out;
     }
-    
+
     .project-header:hover {
         background-size: 110%;
     }
 
-
     .project-container {
         position: relative;
-        
+
         aspect-ratio: 1 / 1.4;
         max-width: 15rem;
 
@@ -68,23 +54,27 @@ const props = Astro.props as Props
         grid-template-columns: 1fr;
         grid-template-rows: 2fr 1fr;
 
-        
         background-color: var(--color-bg);
         background-clip: padding-box;
 
-        color: var(--color-text)
+        color: var(--color-text);
     }
 
-        /*This took me SOOOO long to figure out */
+    /*This took me SOOOO long to figure out */
     .project-container::after {
-        content: '';
+        content: "";
         position: absolute;
         top: -2px;
         left: -2px;
         right: -2px;
         bottom: -2px;
         z-index: -1;
-        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
+        background: linear-gradient(
+            -35deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary),
+            var(--color-accent-terciary)
+        );
         border-radius: 0.5rem;
         opacity: 0;
         transition: all 100ms ease-in-out;
@@ -94,15 +84,20 @@ const props = Astro.props as Props
         opacity: 1;
     }
 
-     .project-container::before {
-        content: '';
+    .project-container::before {
+        content: "";
         position: absolute;
         top: 0px;
         left: 0px;
         right: 0px;
         bottom: 0px;
         z-index: -2;
-        background: linear-gradient(-35deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-terciary));
+        background: linear-gradient(
+            -35deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary),
+            var(--color-accent-terciary)
+        );
         filter: blur(10px);
         opacity: 0;
         transition: all 100ms ease-in-out;
@@ -113,16 +108,9 @@ const props = Astro.props as Props
     }
 
     .project-name-sub {
-
         font-size: var(--font-size-base);
         font-weight: 600;
         margin: 0;
         margin-left: 20px;
-
     }
-
 </style>
-=======
-const props = Astro.props as Props;
----
->>>>>>> master

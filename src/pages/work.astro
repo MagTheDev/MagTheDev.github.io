@@ -1,16 +1,53 @@
 ---
 import Badge from "../components/Badge.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import ProjectCard from "../components/ProjectCard.vue";
 import Layout from "../layouts/Layout.astro";
 
 ---
 
 <Layout title="MagTheDev - Work">
 
-    <!-- <ProjectCard img_url="/image.webp" name="Rust" url="https://github.com">
-        <p>COOL COOL</p>
-    </ProjectCard> -->
+<div class="container">
 
-    <Badge color="green" name="test"></Badge>
+    <ProjectCard img_url="/image.webp" name="Rust" url="https://github.com" client:idle>
+        <div slot="badges" class="badges">
+            <Badge color="green" name="Vue3"></Badge>
+            <Badge color="green" name="Vue3"></Badge>
+            <Badge color="green" name="Vue3"></Badge>
+        </div>
+
+        ajwlkawjdalkwjdalwkdjalwkdja;lwdjh;lsdkghsdfl;ghdl;fghjfdslkgjhsdfglhsdfglkhsdfgklfhgkjhdlkgjhdfgnbdfkghbdkjfghsdfklgbsdfklgbn
+    </ProjectCard>
+    <ProjectCard img_url="/image.webp" name="Rust" url="https://github.com" client:idle>
+        <div slot="badges" class="badges">
+            <Badge color="green" name="Vue3"></Badge>
+            <Badge color="green" name="Vue3"></Badge>
+            <Badge color="green" name="Vue3"></Badge>
+        </div>
+
+        ajwlkawjdalkwjdalwkdjalwkdja;lwdjh;lsdkghsdfl;ghdl;fghjfdslkgjhsdfglhsdfglkhsdfgklfhgkjhdlkgjhdfgnbdfkghbdkjfghsdfklgbsdfklgbn
+    </ProjectCard>
+
+</div>
 
 </Layout>
+
+<style>
+
+    .badges {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        flex-wrap: wrap;
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .container {
+
+        display: flex;
+        gap: 64px;
+
+    }
+</style>

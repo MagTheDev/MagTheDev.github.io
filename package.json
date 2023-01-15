@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "astro": "^1.0.6"
+    "@astrojs/vue": "^1.2.2",
+    "astro": "^1.0.6",
+    "vue": "^3.2.30"
   },
   "dependencies": {
     "astro-icon": "^0.7.3"

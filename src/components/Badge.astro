@@ -1,0 +1,43 @@
+---
+
+export interface Props {
+    name: string;
+    color: string;
+}
+
+const props = Astro.props as Props;
+
+---
+
+<div class="container" >
+    <div class="dot"></div>
+    Framework
+</div>
+
+<style define:vars={{ color: props.color }}>
+
+    .container {
+        width: fit-content;
+        height: fit-content;
+        padding: 5px 10px 5px 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 2px solid var(--color);
+        transition: all 100ms ease-in-out;
+    }
+
+    .container:hover {
+        background-color: var(--color)
+    }
+
+    .dot {
+        background-color: white;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+</style>

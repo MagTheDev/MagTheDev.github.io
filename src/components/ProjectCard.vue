@@ -2,8 +2,8 @@
 
 <script setup lang="ts">
 
-import { ref, Transition } from 'vue';
-
+import { computed, ref, Transition } from 'vue';
+import { vAutoAnimate } from '@formkit/auto-animate'
 
 interface Props {
     name: string,
@@ -12,10 +12,13 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
 const expand = ref(false)
 
-
+const background = computed(() => {
+    return {
+        backgroundImage: `url(${props.img_url});`
+    }
+})
 
 </script>
 
@@ -23,18 +26,17 @@ const expand = ref(false)
 
 
     <div class="project-container" @click="expand = !expand">
-        <div class="project-header" >
-        </div>
-        <div class="project-name-sub">
+        <div class="project-header" :style="background"/>
+        <div v-auto-animate class="project-name-sub">
             {{ props.name }}
             <div class="badge-container">
                 <slot name="badges"></slot>
             </div>
-            <Transition>
-                <div v-if="expand" class="desc-container">
-                    <slot/>
-                </div>
-            </Transition>
+
+            <div v-if="expand" class="desc-container">
+                <slot />
+            </div>
+
         </div>
     </div>
 
@@ -43,18 +45,7 @@ const expand = ref(false)
 
 
 
-<style>
-
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 100ms ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-
+<style scoped>
 .desc-container {
 
     padding: 16px;

@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 
-import { computed, ref, Transition } from 'vue';
+import { ref } from 'vue';
 import { vAutoAnimate } from '@formkit/auto-animate'
 
 interface Props {
@@ -13,12 +13,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const expand = ref(false)
-
-const background = computed(() => {
-    return {
-        backgroundImage: `url(${props.img_url});`
-    }
-})
+const background = `url(${props.img_url})`
 
 </script>
 
@@ -26,7 +21,7 @@ const background = computed(() => {
 
 
     <div class="project-container" @click="expand = !expand">
-        <div class="project-header" :style="background"/>
+        <div class="project-header" />
         <div v-auto-animate class="project-name-sub">
             {{ props.name }}
             <div class="badge-container">
@@ -59,6 +54,7 @@ a {
 }
 
 .project-header {
+    background-image: v-bind("background");
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;

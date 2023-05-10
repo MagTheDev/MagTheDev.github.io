@@ -3,6 +3,7 @@
 export interface Props {
     name: string;
     color: string;
+    dot_color: string;
 }
 
 const props = Astro.props as Props;
@@ -11,17 +12,17 @@ const props = Astro.props as Props;
 
 <div class="container" >
     <div class="dot"></div>
-    Framework
+    { props.name }
 </div>
 
-<style define:vars={{ color: props.color }}>
+<style define:vars={{ color: props.color, dot: props.dot_color }}>
 
     .container {
 
         width: fit-content;
         height: fit-content;
         padding: 5px 10px 5px 10px;
-        border-radius: 10px;
+        border-radius: 9999px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,7 +36,7 @@ const props = Astro.props as Props;
     }
 
     .dot {
-        background-color: white;
+        background-color: var(--dot);
         width: 12px;
         height: 12px;
         border-radius: 50%;

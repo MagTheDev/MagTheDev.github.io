@@ -1,93 +1,184 @@
 ---
-import GithubCard from "../components/GithubCard.astro";
-import SocialLink from "../components/SocialLink.astro";
 import Layout from "../layouts/Layout.astro";
+import SocialLink from "../components/SocialLink.astro";
 ---
 
 <Layout title="MagTheDev - Home">
-	<main>
-		<h1><span class="text-gradient">Uh Oh</span></h1>
-		<div class="under-construction">
-			This page is still under construction
-		</div>
-		<div class="under-construction subtext">
-			For now you can still check out my github
-		</div>
-		<GithubCard />
-		<p class="exclamation">But I want to see what you're working on!</p>
-		<div id="smtn">
-			<p class="reply">Well, if you insist...</p>
-			<a href="/wip/landing"><button>Here</button></a>
-		</div>
-	</main>
+    <div class="container">
+        <div class="greeting-container">
+            <h1 class="greeting">
+                <span class="highlight">Hello,</span> I'm Jake
+            </h1>
+            <p class="desc">
+                <span class="blink">&gt;</span> A Software Developer
+            </p>
+            <div class="nav-container">
+                <div class="nav-item">
+                    <SocialLink
+                        name="Github"
+                        url="https://github.com/MagTheDev"
+                        icon="ph:github-logo"
+                    />
+                </div>
+                <div class="nav-item">
+                    <SocialLink
+                        name="Me"
+                        url="/about"
+                        icon="ph:finn-the-human"
+                    />
+                </div>
+                <div class="nav-item">
+                    <SocialLink
+                        name="My Work"
+                        url="/work"
+                        icon="ph:projector-screen"
+                    />
+                </div>
+                <div class="nav-item">
+                    <SocialLink
+                        name="Resume"
+                        url="/resume"
+                        icon="ph:address-book"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
 </Layout>
 
 <style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
+    h1,
+    h2,
+    h3,
+    p {
+        margin: 0;
+        padding: 0;
+    }
 
-	p {
-		margin: 0;
-	}
+    p {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 600;
+    }
 
-	h1 {
-		margin: 2rem 0;
-	}
+    .container {
+        padding: 2rem 1em;
+        width: 90%;
+        margin: 0 auto;
 
-	main {
-		margin: auto;
-		padding: 1em;
-		max-width: 80vw;
-	}
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-	#smtn {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-	}
+        height: 90vh;
+        box-sizing: border-box;
+    }
 
-	.exclamation {
-		font-size: 1.5rem;
-		font-weight: 600;
-		margin-top: 20px;
-	}
+    .greeting {
+        font-size: calc(var(--font-size-xxl) + 2rem);
+    }
 
-	.reply {
-		font-size: 0.8rem;
-		font-weight: 600;
-		font-style: italic;
-	}
+    .greeting-container {
+        margin-right: 25px;
+    }
 
-	.text-gradient {
-		font-weight: 900;
-		font-size: 100px;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
+    .nav-container {
+        margin-top: 20px;
 
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
+        display: grid;
+        gap: 1.5rem;
 
-	.under-construction {
-		font-size: 64px;
-		font-weight: bold;
-	}
+        grid-template-columns: 1fr 1fr;
 
-	.under-construction.subtext {
-		font-size: 24px;
-		margin-left: 10px;
-	}
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (min-width: 45em) {
+        .nav-container {
+            display: grid;
+            gap: 1.5rem;
+
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .highlight {
+        background-image: -webkit-linear-gradient(
+            -30deg,
+            var(--color-accent-primary),
+            var(--color-accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 100% 200%;
+        background-position-y: 100%;
+        animation: breathe infinite 5s;
+    }
+
+    .highlight-orange {
+        background-image: -webkit-linear-gradient(
+            -30deg,
+            var(--color-accent-secondary),
+            var(--color-accent-terciary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .desc {
+        font-style: italic;
+        font-weight: 600;
+        margin-left: 3%;
+        color: #d3d3d3;
+    }
+
+    .blink {
+        animation: blink infinite 2s;
+    }
+
+    .response-container {
+        /* This will get overridden by media query */
+        display: none;
+
+        max-width: 45%;
+        margin-top: 4.5rem;
+    }
+
+
+    @media only screen and (min-width: 800px) {
+        .desktop {
+            display: block;
+        }
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes breathe {
+        0%,
+        100% {
+            background-position-y: 0%;
+        }
+        50% {
+            background-position-y: 100%;
+        }
+    }
 </style>

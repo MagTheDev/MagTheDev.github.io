@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.5",
-    "astro-icon": "^0.7.3"
+    "@types/three": "^0.155.0",
+    "astro-icon": "^0.7.3",
+    "three": "^0.155.0"
   }
 }

@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 
 ---
 
-<Layout title="404">
-    <div class="container">
+<Layout title="MagTheDev | 404">
+    <div class="container top" id="text">
         <h1 class="large grad">404</h1>
         <h2 class="large">NOT FOUND</h2>
-        <h3 class="home">HOME</h3>
+        <h3 class="home" id="home">HOME</h3>
     </div>
-    <div class="container">
+    <div class="container" id="canvas-container">
         <canvas id="canvas"></canvas>
     </div>
 </Layout>
@@ -27,6 +27,10 @@ import Layout from "../layouts/Layout.astro";
         height: 100vh;
         width: 100vw;
     }
+    .top {
+        z-index: 1;
+        transition: all 0.2s ease-in-out;
+    }
     .large {
         font-size: 7rem;
         font-family: 'Space Mono', monospace;
@@ -36,7 +40,11 @@ import Layout from "../layouts/Layout.astro";
         font-size: 2rem;
         font-family: 'Space Mono', monospace;
         margin: 0;
-        color: var(--color-turquiose)
+        transition: color 0.2s ease-in-out;
+    }
+    .home:hover {
+        cursor: pointer;
+        color: var(--color-light-blue)
     }
 </style>
 
@@ -46,7 +54,14 @@ import Layout from "../layouts/Layout.astro";
     import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
     import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
-    var material, mesh;
+    var material: THREE.MeshBasicMaterial, 
+        mesh: THREE.Mesh;
+    
+    var zoom = false,
+        frame = 0,
+        // This is the number of frames it takes to reach infinity
+        over_frames = 2 * 30;
+
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -54,7 +69,7 @@ import Layout from "../layouts/Layout.astro";
 
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.setPixelRatio( window.devicePixelRatio );
-
+    
     const composer = new EffectComposer( renderer );
     
     document.body.appendChild( renderer.domElement );
@@ -66,6 +81,9 @@ import Layout from "../layouts/Layout.astro";
 
     material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
     mesh = new THREE.Mesh(new THREE.IcosahedronGeometry( 20, 1 ), material);
+    
+    // material = new THREE.PointsMaterial( { color: 0xffffff, size: 0.01, } );
+    // mesh = new THREE.Points(new THREE.IcosahedronGeometry( 20, 10 ), material);
 
     scene.add( mesh );
 
@@ -76,12 +94,35 @@ import Layout from "../layouts/Layout.astro";
     function animate() {
         requestAnimationFrame( animate );
 
-        mesh.rotation.x += 0.001;
+    
+        mesh.rotation.x += 0.001; 
         mesh.rotation.y += 0.001;
         mesh.rotation.z += 0.001;
+
+
+        if (zoom) {
+            frame++;
+            let newZ = Math.pow(1 - Math.pow(frame/over_frames, 2), -1 );
+            camera.position.z -= newZ
+            console.log(newZ)
+            if (camera.position.z <= -20) {
+                zoom = false;
+                frame = 0;
+                document.getElementById("canvas-container")!.style.opacity = "0";
+                setTimeout(() => {
+                    window.location.href = "/";
+                }, 400)
+            }
+        }
 
         composer.render();
     }
     animate();
+
+    document.getElementById('home')!.addEventListener('click', () => {
+        document.getElementById("text")!.style.opacity = "0";
+        zoom = true;
+    })
+
 </script>
 

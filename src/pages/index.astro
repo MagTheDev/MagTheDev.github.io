@@ -3,23 +3,24 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="MagTheDev">
-    <div class="content">
+    <div class="content hide" id="content">
         <div class="part">
             <h1>JAKE</h1>
-            <h1>PORTFOLIO/23</h1>
+            <h1><span class="">P0RT</span>FOLIO/23</h1>
         </div>
         <div class="part item-container">
-            <div class="item">
+            <div class="item" id="about">
                 <h3>ABOUT</h3>
             </div>
-            <div class="item">
-                <h3>PROJECT</h3>
+            <div class="item" id="projects">
+                <h3>PROJECTS</h3>
             </div>
-            <div class="item">
+            <div class="item" id="contact">
                 <h3>CONTACT</h3>
             </div>
         </div>
     </div>
+
 </Layout>
 
 <style>
@@ -49,6 +50,13 @@ import Layout from "../layouts/Layout.astro";
         display: flex;
         flex-direction: column;
         gap: 10px;
+        transition: all 0.5s ease-in-out;
+    }
+    .hide {
+        opacity: 0;
+    }
+    .item:hover {
+        color: var(--color-light-blue);
     }
     .item-container {
         width: 100%;
@@ -62,5 +70,40 @@ import Layout from "../layouts/Layout.astro";
         border: 5px solid #1a1a1b;
         margin: 10px;
         padding: 10px;
+        transition: all 0.2s ease-in-out;
+    }
+    .highlight {
+        color: var(--color-light-blue);
+        animation: breathe 5s ease-in-out infinite;
+    }
+    @keyframes breathe {
+        0% { color: var(--color-light-blue) }
+        50% { color: var(--color-text) }
     }
 </style>
+
+<script>
+    // listen for DOMContentLoaded event in the document
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("content")!.classList.remove("hide");
+    });
+    
+    document.getElementById("about")!.addEventListener("click", function () {
+        document.getElementById("content")!.classList.add("hide");
+        setTimeout(() => {
+            window.location.href = "/about";
+        },500)
+    });
+    document.getElementById("projects")!.addEventListener("click", function () {
+        document.getElementById("content")!.classList.add("hide");
+        setTimeout(() => {
+            window.location.href = "/projects";
+        },500)
+    });
+    document.getElementById("contact")!.addEventListener("click", function () {
+        document.getElementById("content")!.classList.add("hide");
+        setTimeout(() => {
+            window.location.href = "/contact";
+        },500)
+    });
+</script>

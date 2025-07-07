@@ -13,13 +13,6 @@ const { title } = Astro.props as Props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="description" content="Homepage of MagTheDev" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<link
-			rel="preload"
-			href="/BerkeleyMono-Regular.otf"
-			as="font"
-			type="font/otf"
-			crossorigin
-		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -28,42 +21,5 @@ const { title } = Astro.props as Props;
 	</body>
 </html>
 <style>
-	/* load fontdef.css from assets*/
-	@import url("/assets/fontdef.css");
-
-	:root {
-		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-		--font-size-xxl: clamp(5.44rem, 3.38vw + 2.85rem, 5rem);
-
-		--color-text: white;
-		--color-bg: black;
-		--color-border: #1a1a1b;
-
-		--color-primary: #f77f00;
-		--color-bg: #000000;
-		--color-ok: #4ade80;
-		--color-error: #ff0f00;
-		--color-warning: #f77f00;
-		--color-info: #38bdf8;
-		--color-text: #ffffff;
-		--color-muted: #666666;
-		--color-border: #333333;
-		--color-card-bg: #111111;
-	}
-
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	body {
-		font-family: "Courier New", "Monaco", "Consolas", monospace;
-		background-color: var(--thunder-bg);
-		color: var(--thunder-text);
-		line-height: 1.6;
-		min-height: 100vh;
-	}
+	@import url("../assets/styles/globals.css");
 </style>

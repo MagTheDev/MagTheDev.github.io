@@ -1,9 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import StatusBar from "../components/StatusBar.astro";
+import Banner from "../components/Banner.astro";
 ---
 
 <Layout title="MagTheDev">
+    <StatusBar />
 
-    
-
+    <div class="main-content">
+        <div class="container">
+            <div class="hero-section">
+                <div class="banner-container">
+                    <Banner />
+                </div>
+                <h1>Welcome to MagTheDev's Portfolio</h1>
+            </div>
+        </div>
+    </div>
 </Layout>
+
+<style>
+    @import url("../assets/styles/globals.css");
+    
+    .main-content {
+        margin-top: 60px;
+        padding: 20px 0;
+    }
+
+    .banner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

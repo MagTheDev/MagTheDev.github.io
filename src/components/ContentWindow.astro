@@ -1,8 +1,8 @@
 ---
 interface Props {
-    dir: string;
+    command: string;
 }
-const { dir } = Astro.props;
+const { command } = Astro.props;
 ---
 
 <div class="terminal-window" id="skills">
@@ -18,7 +18,7 @@ const { dir } = Astro.props;
     <div class="terminal-content">
         <div class="prompt-container">
             <div class="prompt">[jake@nixos MagTheDev.github.io]$</div>
-            <div class="command">ls -al ./{dir}</div>
+            <div class="command">{command}</div>
         </div>
 
         <div class="content-container">
@@ -56,6 +56,11 @@ const { dir } = Astro.props;
         justify-content: center;
         align-items: center;
         
+    }
+    .prompt {
+        font-size: var(--font-size-small);
+        color: var(--color-primary);
+        font-weight: 600;
     }
     .content-container {
         width: 90%;

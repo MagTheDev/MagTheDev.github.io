@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import StatusBar from "../components/StatusBar.astro";
 import Banner from "../components/Banner.astro";
+import ContentWindow from "../components/ContentWindow.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SkillGroup from "../components/SkillGroup.astro";
 ---
 
 <Layout title="MagTheDev">
@@ -24,7 +27,10 @@ import Banner from "../components/Banner.astro";
                         <span class="output-text"
                             >Full-Stack Developer & System Administrator</span
                         >
-                         <span class="blink">Specializing in robust applications and scalable infrastructure</span>
+                        <span class="blink"
+                            >Specializing in robust applications and scalable
+                            infrastructure</span
+                        >
                     </div>
                 </div>
             </div>
@@ -33,6 +39,81 @@ import Banner from "../components/Banner.astro";
                 <a href="#projects" class="nav-item">./projects</a>
                 <a href="#about" class="nav-item">./about</a>
             </nav>
+
+            <!-- Windows -->
+            <ContentWindow name="skills.sh" command="cat ./skills-*.md">
+                <div class="skills-grid" id="skills">
+                    <SkillGroup
+                        name="development/"
+                        items={[
+                            "Rust",
+                            "Kotlin",
+                            "Javascript/Typescript",
+                            "Python",
+                            "Elixir",
+                            "Postgresql",
+                            "REST/GraphQL",
+                        ]}
+                    />
+                    <SkillGroup
+                        name="infrastructure/"
+                        items={[
+                            "Linux",
+                            "Docker",
+                            "NixPacks",
+                            "Nginx/Apache",
+                            "Kubernetes",
+                            "Github Actions",
+                        ]}
+                    />
+                    <SkillGroup
+                        name="monitoring/"
+                        items={["Prometheus", "Grafana", "Sentry"]}
+                    />
+                </div>
+            </ContentWindow>
+            <ContentWindow name="projects.sh" command="ls -al ./projects/">
+                <div class="projects-container" id="projects">
+                    <ProjectCard
+                        name="adventná-výzva/"
+                        tech={["React", "SpringBoot", "PostgresQL"]}
+                        links={[
+                            {
+                                name: "GitHub",
+                                url: "https://github.com/7274-dev/AdventnaVyzva-GlobalBackend",
+                            },
+                        ]}
+                    >
+                        <strong>Adventná výzva</strong> is a playful fullstack web
+                        app created for our school to bring the spirit of Advent
+                        to life. Teachers can create daily tasks for each day of
+                        Advent, and students participate by completing them in an
+                        engaging, interactive way. The app blends festive fun with
+                        meaningful challenges, encouraging participation and community
+                        during the holiday season.
+                    </ProjectCard>
+                    <ProjectCard
+                        name="edufix/"
+                        tech={["Swift", "SwiftUI"]}
+                        links={[
+                            {
+                                name: "GitHub",
+                                url: "https://github.com/MagTheDev/EduFix",
+                            },
+                        ]}
+                        isLast
+                    >
+                        <strong>EduFix</strong> is a modern Swift-based companion
+                        app for EduPage, designed to smooth over the frustrations
+                        of an outdated academic system. Its main feature is a customizable
+                        homescreen widget that displays the current lesson in real
+                        time, giving students quick, glanceable access to their schedule.
+                        Future updates will expand functionality with tools like
+                        a grade calculator, automatic lunch selection, and more —
+                        all with a focus on usability and a clean, native iOS experience.
+                    </ProjectCard>
+                </div>
+            </ContentWindow>
         </div>
     </div>
 </Layout>
@@ -79,7 +160,7 @@ import Banner from "../components/Banner.astro";
         transform: translateY(0.3rem) translateX(0.2rem);
         animation: cursor-blink 1.5s linear infinite;
     }
-    
+
     @keyframes cursor-blink {
         0% {
             background-color: var(--color-bg);
@@ -115,5 +196,18 @@ import Banner from "../components/Banner.astro";
     .nav-item:hover {
         color: var(--color-primary);
         border-color: var(--color-primary);
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+    }
+    .projects-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px 0;
     }
 </style>

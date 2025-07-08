@@ -20,17 +20,22 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
       __/\\\______\//\\\________\/\\\________/\\\______\//\\\__\/\\\_______\/\\\_\/\\\_______/\\\__\/\\\_____________\/\\\_____\/\\\_____\/\\\__\//\\\\\\_                 
        _\///\\\\\\\\\\\/_________\/\\\_______\///\\\\\\\\\\\/___\/\\\_______\/\\\_\/\\\\\\\\\\\\/___\/\\\_____________\/\\\__/\\\\\\\\\\\_\/\\\___\//\\\\\_                
         ___\///////////___________\///__________\///////////_____\///________\///__\////////////_____\///______________\///__\///////////__\///_____\/////__               
-
-
 </div>
 
-<style>
+<style is:inline>
+
     .banner-ascii {
         font-family: "Berkeley Mono", "Courier New", monospace;
         font-size: var(--font-size-small);
         color: var(--color-text);
         white-space: pre;
         margin: 0.5rem;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .banner-ascii .underscore {
+        color: var(--color-muted);
+        transition: color 0.3s ease-in-out;
     }
 
 </style>
@@ -40,6 +45,6 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
     if (asciiArt) {
         // TODO: This is a really crude way to color the ASCII art.
         //       In the future, add groupings to not overwhelm the DOM
-        asciiArt.innerHTML = asciiArt.innerHTML.replace(/_/g, '<span style="color: #666666">_</span>');
+        asciiArt.innerHTML = asciiArt.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
     }
 </script>

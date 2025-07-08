@@ -1,0 +1,43 @@
+---
+interface Props {
+    name: string;
+    items: string[];
+}
+
+const { name, items } = Astro.props;
+---
+
+<div class="skill-category">
+    <h3>{name}</h3>
+    <ul class="skill-list">
+        {items.map(item => (<li>{item}</li>))}
+    </ul>
+</div>
+
+<style>
+    .skill-category {
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        padding: 15px;
+    }
+    .skill-category h3 {
+        color: var(--color-primary);
+        margin-bottom: 10px;
+        font-size: var(--font-size-large);
+    }
+    .skill-list {
+        list-style: none;
+    }
+    .skill-list li {
+        padding: 3px 0;
+        color: var(--color-text);
+    }
+    .skill-list li::before {
+        content: "├── ";
+        color: var(--color-muted);
+    }
+    .skill-list li:last-child::before {
+        content: "└── ";
+        color: var(--color-muted);
+    }
+</style>

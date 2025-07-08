@@ -1,0 +1,76 @@
+---
+interface Props {
+    name: string,
+    tech: string[],
+    links: Link[],
+    isLast?: boolean
+}
+
+interface Link {
+    name: string,
+    url: string
+}
+
+const {name, tech, links, isLast = false} = Astro.props
+---
+
+<div class="project-item">
+    <span class="project-name">
+        {isLast ? "└──" : "├──"}
+        {name}
+    </span>
+    <div class="project-desc">
+        <slot/>
+    </div>
+    <div class="tech-stack">
+        <span>Tech: </span>
+        {tech.map((item, idx, _) => ( <span>{item}{idx == (tech.length-1) ? '' : ','}</span> ))}
+    </div>
+    <div class="links">
+        {links.map(link => ( <a href={link.url} class="link">[{link.name}]</a> ))}
+    </div>
+</div>
+
+<style>
+    .project-item {
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        padding: 20px;
+        transition: border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex-grow: 1;
+    }
+    .project-item:hover {
+        border-color: var(--color-primary);
+    }
+    .project-name {
+        color: var(--color-primary)
+    }
+    .tech-stack {
+        display: flex;
+        gap: 10px;
+        color: var(--color-muted);
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .links {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-items: center
+    }
+    .link {
+        color: var(--color-info);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s ease;
+        
+    }
+    .link:hover {
+        border-bottom-color: var(--color-info);
+    }
+</style>

@@ -1,6 +1,8 @@
 	@import url("fontdef.css");
 
 	:root {
+		--font-size-xxs: clamp(0.1rem, 0.1vw + 0.2rem, 0.4rem); 
+  		--font-size-xs:  clamp(0.4rem, 0.5vw + 0.4rem, 0.8rem);
 	    --font-size-small: clamp(0.8rem, 0.1vw + 0.6rem, 1rem);
 	    --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 	    --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
@@ -26,6 +28,7 @@
 	    padding: 0 20px;
 	}
 
+
 	* {
 	    margin: 0;
 	    padding: 0;
@@ -38,4 +41,5 @@
 	    color: var(--color-text);
 	    line-height: 1.6;
 	    min-height: 100vh;
+		overflow-x: hidden;
 	}

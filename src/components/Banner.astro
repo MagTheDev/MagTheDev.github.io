@@ -32,6 +32,20 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
         margin: 0.5rem;
         transition: color 0.3s ease-in-out;
     }
+    @media (max-width: 1300px) {
+        .banner-ascii {
+            font-size: var(--font-size-xs);
+        }
+    }
+
+
+    @media (max-width: 510px) {
+        .banner-ascii {
+            font-size: var(--font-size-xxs);
+            margin-top: 2rem;
+        }
+    }
+
 
     .banner-ascii .underscore {
         color: var(--color-muted);
@@ -40,7 +54,7 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
 
 </style>
 
-<script client:load>
+<script>
     const asciiArt = document.querySelector('.banner-ascii');
     if (asciiArt) {
         // TODO: This is a really crude way to color the ASCII art.

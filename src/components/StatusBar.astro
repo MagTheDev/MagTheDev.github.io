@@ -1,0 +1,83 @@
+---
+
+---
+
+<div class="status-bar">
+    <div class="container">
+        <div class="status-container">
+            <div class="header-left">
+                <span class="gray">PORTFOLIO_INIT:</span> LOADED(100%)
+            </div>
+            <div class="header-right">
+                <span class="orange">VISITORS_ONLINE: 1</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .status-bar {
+        background: var(--color-bg);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--color-border);
+        font-size: 0.9rem;
+        font-weight: 600;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .status-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .status-container .gray {
+        color: var(--color-muted);
+    }
+    .status-container .orange {
+        color: var(--color-warning);
+    }
+</style>
+    
+<script>
+    let visitorsHtml = document.querySelector('.status-bar .orange');
+    let currentVisitors = 1; // Initial visitor count
+    if (visitorsHtml) {
+        // Initial visitor count
+        visitorsHtml.textContent = `VISITORS_ONLINE: ${currentVisitors}`;
+
+        // Simulate a visitor count update
+        setInterval(() => {
+            updateVisitors();
+        }, 10_000);
+
+        // TODO: This is really crude, but it works for now.
+        //       Figure out a better way to simulate visitor count updates.
+        let updateVisitors = () => {
+            const newVisitors = Math.floor(Math.random() * 100) + 1; 
+            if (newVisitors > currentVisitors) {
+                for (let i = currentVisitors; i <= newVisitors; i++) {
+                    setTimeout(() => {
+                        visitorsHtml.textContent = `VISITORS_ONLINE: ${i}`;
+                    }, i * 50);
+                }
+            } else {
+                for (let i = currentVisitors; i >= newVisitors; i--) {
+                    setTimeout(() => {
+                        visitorsHtml.textContent = `VISITORS_ONLINE: ${i}`;
+                    }, (currentVisitors - i) * 50);
+                }
+            }
+            currentVisitors = newVisitors;
+        }
+    }
+</script>

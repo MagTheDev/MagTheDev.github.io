@@ -1,93 +1,119 @@
 ---
-import GithubCard from "../components/GithubCard.astro";
-import SocialLink from "../components/SocialLink.astro";
 import Layout from "../layouts/Layout.astro";
+import StatusBar from "../components/StatusBar.astro";
+import Banner from "../components/Banner.astro";
 ---
 
-<Layout title="MagTheDev - Home">
-	<main>
-		<h1><span class="text-gradient">Uh Oh</span></h1>
-		<div class="under-construction">
-			This page is still under construction
-		</div>
-		<div class="under-construction subtext">
-			For now you can still check out my github
-		</div>
-		<GithubCard />
-		<p class="exclamation">But I want to see what you're working on!</p>
-		<div id="smtn">
-			<p class="reply">Well, if you insist...</p>
-			<a href="/wip/landing"><button>Here</button></a>
-		</div>
-	</main>
+<Layout title="MagTheDev">
+    <StatusBar />
+
+    <div class="main-content">
+        <div class="container">
+            <div class="hero-section">
+                <div class="banner-container">
+                    <Banner />
+                </div>
+                <div class="hero-text">
+                    <div>
+                        <span class="prompt">
+                            [jake@archlinux MagTheDev.github.io]$
+                        </span>
+                        <span class="command">whoami</span>
+                    </div>
+                    <div class="output">
+                        <span class="output-text"
+                            >Full-Stack Developer & System Administrator</span
+                        >
+                         <span class="blink">Specializing in robust applications and scalable infrastructure</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#skills" class="nav-item">./skills</a>
+                <a href="#projects" class="nav-item">./projects</a>
+                <a href="#about" class="nav-item">./about</a>
+            </nav>
+        </div>
+    </div>
 </Layout>
 
 <style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
+    @import url("../assets/styles/globals.css");
 
-	p {
-		margin: 0;
-	}
+    .main-content {
+        padding: 20px 0;
+    }
 
-	h1 {
-		margin: 2rem 0;
-	}
+    .banner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero-section {
+        margin: 2rem 0;
+    }
+    .hero-text {
+        margin-top: 20px;
+        font-weight: 500;
+    }
+    .prompt {
+        color: var(--color-primary);
+        margin-right: 1rem;
+    }
+    .output {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.2rem;
+    }
+    .output-text {
+        color: var(--color-secondary);
+        font-size: 1.2rem;
+    }
 
-	main {
-		margin: auto;
-		padding: 1em;
-		max-width: 80vw;
-	}
+    .blink::after {
+        content: "";
+        width: 2px;
+        height: 1.2rem;
+        background-color: var(--color-primary);
+        display: inline-block;
+        transform: translateY(0.3rem) translateX(0.2rem);
+        animation: cursor-blink 1.5s linear infinite;
+    }
+    
+    @keyframes cursor-blink {
+        0% {
+            background-color: var(--color-bg);
+        }
+        30% {
+            background-color: var(--color-bg);
+        }
+        50% {
+            background-color: var(--color-primary);
+        }
+        70% {
+            background-color: var(--color-bg);
+        }
+        100% {
+            background-color: var(--color-bg);
+        }
+    }
 
-	#smtn {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-	}
-
-	.exclamation {
-		font-size: 1.5rem;
-		font-weight: 600;
-		margin-top: 20px;
-	}
-
-	.reply {
-		font-size: 0.8rem;
-		font-weight: 600;
-		font-style: italic;
-	}
-
-	.text-gradient {
-		font-weight: 900;
-		font-size: 100px;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
-
-	.under-construction {
-		font-size: 64px;
-		font-weight: bold;
-	}
-
-	.under-construction.subtext {
-		font-size: 24px;
-		margin-left: 10px;
-	}
+    .nav-menu {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 4rem 0;
+        flex-wrap: wrap;
+    }
+    .nav-item {
+        color: var(--color-muted);
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+    .nav-item:hover {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
 </style>

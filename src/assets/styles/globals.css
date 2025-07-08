@@ -1,0 +1,41 @@
+	@import url("fontdef.css");
+
+	:root {
+	    --font-size-small: clamp(0.8rem, 0.1vw + 0.6rem, 1rem);
+	    --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+	    --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+	    --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+	    --font-size-xxl: clamp(5.44rem, 3.38vw + 2.85rem, 5rem);
+
+	    --color-text: #F2F0EF;
+	    --color-primary: #f77f00;
+	    --color-bg: #000000;
+	    --color-ok: #4ade80;
+	    --color-error: #ff0f00;
+	    --color-warning: #f77f00;
+	    --color-info: #38bdf8;
+	    --color-white: #ffffff;
+	    --color-muted: #666666;
+	    --color-border: #333333;
+	    --color-card-bg: #111111;
+	}
+
+	.container {
+	    max-width: 1200px;
+	    margin: 0 auto;
+	    padding: 0 20px;
+	}
+
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+
+	body {
+	    font-family: "Berkeley Mono", "Monaco", "Consolas", monospace;
+	    background-color: var(--color-bg);
+	    color: var(--color-text);
+	    line-height: 1.6;
+	    min-height: 100vh;
+	}

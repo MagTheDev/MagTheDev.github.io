@@ -1,13 +1,14 @@
 ---
 interface Props {
+    name: string;
     command: string;
 }
-const { command } = Astro.props;
+const { name, command } = Astro.props;
 ---
 
 <div class="terminal-window" id="skills">
     <div class="terminal-header">
-        <div class="terminal-title">skills.sh</div>
+        <div class="terminal-title">{name}</div>
         <!-- TODO: Fix this -->
         <!-- <div class="terminal-controls">
             <div class="control-btn close"></div>

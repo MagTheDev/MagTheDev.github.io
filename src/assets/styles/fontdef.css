@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Regular.otf") format("opentype");
+  font-display: auto;
   font-weight: 400;
   font-style: normal;
 }
@@ -8,6 +9,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Light.otf") format("opentype");
+  font-display: auto;
   font-weight: 300;
   font-style: normal;
 }
@@ -15,6 +17,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-ExtraLight.otf") format("opentype");
+  font-display: auto;
   font-weight: 200;
   font-style: normal;
 }
@@ -22,6 +25,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Thin.otf") format("opentype");
+  font-display: auto;
   font-weight: 100;
   font-style: normal;
 }
@@ -29,6 +33,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Medium.otf") format("opentype");
+  font-display: auto;
   font-weight: 500;
   font-style: normal;
 }
@@ -36,6 +41,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-SemiBold.otf") format("opentype");
+  font-display: auto;
   font-weight: 600;
   font-style: normal;
 }
@@ -43,6 +49,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Bold.otf") format("opentype");
+  font-display: auto;
   font-weight: 700;
   font-style: normal;
 }
@@ -50,6 +57,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-ExtraBold.otf") format("opentype");
+  font-display: auto;
   font-weight: 800;
   font-style: normal;
 }
@@ -57,6 +65,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Black.otf") format("opentype");
+  font-display: auto;
   font-weight: 900;
   font-style: normal;
 }
@@ -65,6 +74,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 400;
   font-style: oblique;
 }
@@ -72,6 +82,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Light-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 300;
   font-style: oblique;
 }
@@ -79,6 +90,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-ExtraLight-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 200;
   font-style: oblique;
 }
@@ -86,6 +98,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Thin-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 100;
   font-style: oblique;
 }
@@ -93,6 +106,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Medium-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 500;
   font-style: oblique;
 }
@@ -100,6 +114,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-SemiBold-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 600;
   font-style: oblique;
 }
@@ -107,6 +122,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Bold-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 700;
   font-style: oblique;
 }
@@ -114,6 +130,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-ExtraBold-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 800;
   font-style: oblique;
 }
@@ -121,6 +138,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-Black-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 900;
   font-style: oblique;
 }
@@ -128,6 +146,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-SemiLight.otf") format("opentype");
+  font-display: auto;
   font-weight: 350;
   font-style: normal;
 }
@@ -135,6 +154,7 @@
 @font-face {
   font-family: "Berkeley Mono";
   src: url("../assets/fonts/BerkeleyMono-SemiLight-Oblique.otf") format("opentype");
+  font-display: auto;
   font-weight: 350;
   font-style: oblique;
 }

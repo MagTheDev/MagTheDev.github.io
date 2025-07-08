@@ -3,7 +3,7 @@ interface Props {
     name: string,
     tech: string[],
     links: Link[],
-    isLast: boolean | undefined
+    isLast?: boolean
 }
 
 interface Link {
@@ -11,7 +11,7 @@ interface Link {
     url: string
 }
 
-const {name, tech, links, isLast} = Astro.props
+const {name, tech, links, isLast = false} = Astro.props
 ---
 
 <div class="project-item">

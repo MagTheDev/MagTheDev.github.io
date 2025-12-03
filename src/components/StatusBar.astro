@@ -48,36 +48,3 @@
     }
 </style>
     
-<script>
-    let visitorsHtml = document.querySelector('.status-bar .orange');
-    let currentVisitors = 1; // Initial visitor count
-    if (visitorsHtml) {
-        // Initial visitor count
-        visitorsHtml.textContent = `VISITORS_ONLINE: ${currentVisitors}`;
-
-        // Simulate a visitor count update
-        setInterval(() => {
-            updateVisitors();
-        }, 10_000);
-
-        // TODO: This is really crude, but it works for now.
-        //       Figure out a better way to simulate visitor count updates.
-        let updateVisitors = () => {
-            const newVisitors = Math.floor(Math.random() * 100) + 1; 
-            if (newVisitors > currentVisitors) {
-                for (let i = currentVisitors; i <= newVisitors; i++) {
-                    setTimeout(() => {
-                        visitorsHtml.textContent = `VISITORS_ONLINE: ${i}`;
-                    }, i * 50);
-                }
-            } else {
-                for (let i = currentVisitors; i >= newVisitors; i--) {
-                    setTimeout(() => {
-                        visitorsHtml.textContent = `VISITORS_ONLINE: ${i}`;
-                    }, (currentVisitors - i) * 50);
-                }
-            }
-            currentVisitors = newVisitors;
-        }
-    }
-</script>

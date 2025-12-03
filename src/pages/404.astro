@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404">
+    <div class="panic-wrapper">
+        <div class="not-found-text prevent-select">
+            <div class="border-box">
+                <h1>404</h1>
+                <h2>KERNEL PANIC - PAGE NOT FOUND</h2>
+                <a href="/" class="restart">RESTART</a>
+            </div>
+        </div>
+        <div class="panic-text prevent-select">
+            &lt4&gt[ 4382.138338] xhci_hcd 0000:00:14.0: WARN Set TR Deq Ptr cmd failed due to incorrect slot or ep state.
+&lt6&gt[ 4382.138677] usb 3-4.5: USB disconnect, device number 8
+&lt6&gt[ 4383.895043] .kdeconnectd-wr[1961]: segfault at c ip 00007f5f4ed251d1 sp 00007ffdc8c95500 error 4 in libQt5XcbQpa.so.5.15.11[7f5f4eced000+aa000] likely on CPU 15 (core 7, socket 0)
+&lt6&gt[ 4383.895059] Code: ff ff 0f 1f 80 00 00 00 00 48 8b 7b 20 8b 54 24 44 8b 74 24 4c e8 bf 83 fc ff 48 8b 7b 20 31 d2 89 c6 e8 e2 89 fc ff 49 89 c6 &lt8b&gt 40 0c 85 c0 0f 85 6b 04 00 00 e8 ff 1d fd ff 0f b6 40 10 84 c0
+&lt6&gt[ 4384.235069] wlp9s0: deauthenticating from 34:2c:c4:35:fe:8f by local choice (Reason: 3=DEAUTH_LEAVING)
+&lt1&gt[ 4398.103809] BUG: kernel NULL pointer dereference, address: 0000000000000caf
+&lt1&gt[ 4398.103814] #PF: supervisor read access in kernel mode
+&lt1&gt[ 4398.103816] #PF: error_code(0x0000) - not-present page
+&lt6&gt[ 4398.103817] PGD 0 P4D 0
+&lt4&gt[ 4398.103819] Oops: 0000 [#1] PREEMPT SMP NOPTI
+&lt4&gt[ 4398.103821] CPU: 5 PID: 49 Comm: ksoftirqd/5 Tainted: P           O       6.6.40 #1-NixOS
+&lt4&gt[ 4398.103823] Hardware name: LENOVO 20Y5S04T00/20Y5S04T00, BIOS N40ET34W (1.16 ) 04/08/2022
+&lt4&gt[ 4398.103824] RIP: 0010:rb_first+0xf/0x30
+&lt4&gt[ 4398.103829] Code: 10 c3 cc cc cc cc 0f 1f 44 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 48 8b 07 48 85 c0 74 14 48 89 c2 &lt48&gt 8b 40 10 48 85 c0 75 f4 48 89 d0 c3 cc cc cc cc 31 d2 eb f4 66
+&lt4&gt[ 4398.103831] RSP: 0018:ffffc900002bbd88 EFLAGS: 00010206
+&lt4&gt[ 4398.103833] RAX: 0000000000000c9f RBX: ffff8881557722c0 RCX: 000000000002d805
+&lt4&gt[ 4398.103834] RDX: 0000000000000c9f RSI: 0000000000000000 RDI: ffff8881077abb28
+&lt4&gt[ 4398.103836] RBP: ffff888155772240 R08: 0000000000000000 R09: 0000000000038d40
+&lt4&gt[ 4398.103837] R10: 0000000000000000 R11: 0000000000000033 R12: 0000000000000000
+&lt4&gt[ 4398.103838] R13: ffff8881077abb28 R14: 000000000000000a R15: 0000000000000000
+&lt4&gt[ 4398.103839] FS:  0000000000000000(0000) GS:ffff88884f280000(0000) knlGS:0000000000000000
+&lt4&gt[ 4398.103840] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+&lt4&gt[ 4398.103842] CR2: 0000000000000caf CR3: 0000000106826001 CR4: 0000000000f70ee0
+&lt4&gt[ 4398.103843] PKRU: 55555554
+&lt4&gt[ 4398.103844] Call Trace:
+&lt4&gt[ 4398.103845]  &ltTASK&gt
+&lt4&gt[ 4398.103848]  ? __die+0x23/0x70
+&lt4&gt[ 4398.103852]  ? page_fault_oops+0x171/0x4e0
+&lt4&gt[ 4398.103855]  ? __pick_eevdf+0x16c/0x180
+        </div>
+    </div>
+</Layout>
+<style>
+    .panic-wrapper {
+        position: relative;
+        /* min-height: 100vh; */
+    }
+    .panic-text {
+        font-family: "Berkeley Mono", "Courier New", monospace;
+        white-space: pre;
+        color: var(--color-muted);
+        margin: 2rem;
+        font-size: var(--font-size-small);
+        position: relative;
+        z-index: 0;
+    }
+
+    .not-found-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        z-index: 10;
+        line-height: 3rem;
+    }
+
+    /* Decorative border hugging not-found text */
+    .border-box {
+        display: inline-block;
+        position: relative;
+        padding: 1.25rem 2rem;
+        border-left: 2px solid var(--color-primary);
+        border-right: 2px solid var(--color-primary);
+        z-index: 20;
+    }
+
+    .border-box::before,
+    .border-box::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+            to right,
+            var(--color-primary) 15%,
+            transparent 15% 85%,
+            var(--color-primary) 85%
+        );
+        pointer-events: none;
+        z-index: 21;
+    }
+
+    .border-box::before { top: 0; }
+    .border-box::after { bottom: 0; }
+
+    .prevent-select {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    .not-found-text h1 {
+        font-size: 8rem;
+        margin: 0;
+        color: var(--color-primary);
+        transform: translateY(-30px);
+    }
+
+    .restart {
+        display: inline-block;
+        padding: 0.1rem 1.5rem;
+        font-size: 1.2rem;
+        color: var(--color-bg);
+        background-color: var(--color-primary);
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    @media (max-width: 1300px) {
+        .panic-text {
+            font-size: var(--font-size-xs);
+        }
+    }
+</style>

@@ -134,13 +134,75 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
             animation: none;
         }
     }
+    .glitch-char {
+        color: var(--color-primary);
+    }
 </style>
 
 <script>
     const asciiArt = document.querySelector('.banner-ascii');
     if (asciiArt) {
-        // TODO: This is a really crude way to color the ASCII art.
-        //       In the future, add groupings to not overwhelm the DOM
+        // Color underscores
         asciiArt.innerHTML = asciiArt.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
+        
+        // Store original content for glitch effect
+        const originalText = asciiArt.textContent;
+        const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\\';
+        
+        function glitch() {
+            const text = originalText.split('');
+            const glitchLength = Math.floor(Math.random() * 30) + 15; // 15-45 chars
+            const startPos = Math.floor(Math.random() * (text.length - glitchLength));
+            
+            // Replace a random segment with glitch characters
+            for (let i = startPos; i < startPos + glitchLength && i < text.length; i++) {
+                if (text[i] !== '\n' && text[i] !== ' ') {
+                    text[i] = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                }
+            }
+            
+            // Apply glitched text and re-add underscore styling
+            asciiArt!.textContent = text.join('');
+            asciiArt!.innerHTML = asciiArt!.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
+            
+            // Rapidly cycle through glitch frames
+            const glitchDuration = Math.random() * 75 + 25; // 25-100ms per frame
+            const glitchFrames = Math.floor(Math.random() * 14) + 7; // 7-20 frames
+            
+            let frame = 0;
+            const glitchInterval = setInterval(() => {
+                frame++;
+                if (frame >= glitchFrames) {
+                    clearInterval(glitchInterval);
+                    // Restore original
+                    asciiArt!.textContent = originalText;
+                    asciiArt!.innerHTML = asciiArt!.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
+                } else {
+                    // Another glitch frame
+                    const frameText = originalText.split('');
+                    for (let i = startPos; i < startPos + glitchLength && i < frameText.length; i++) {
+                        if (frameText[i] !== '\n' && frameText[i] !== ' ') {
+                            frameText[i] = `<span class="glitch-char">${glitchChars[Math.floor(Math.random() * glitchChars.length)]}</span>`;
+                        }
+                    }
+                    asciiArt!.innerHTML = frameText.join('');
+                    asciiArt!.innerHTML = asciiArt!.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
+                }
+            }, glitchDuration);
+        }
+        
+        // Trigger glitch at random intervals (2-6 seconds)
+        function scheduleGlitch() {
+            const delay = Math.random() * 4000 + 2000;
+            setTimeout(() => {
+                // Respect reduced motion preference
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    glitch();
+                }
+                scheduleGlitch();
+            }, delay);
+        }
+        
+        scheduleGlitch();
     }
 </script>

@@ -2,16 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="404">
-    <div class="panic-wrapper">
-        <div class="not-found-text prevent-select">
+<Layout title="404 - Page Not Found">
+    <main id="main-content" class="panic-wrapper" role="main" aria-labelledby="error-title">
+        <section class="not-found-text prevent-select" aria-label="Error message">
             <div class="border-box">
-                <h1>404</h1>
-                <h2>KERNEL PANIC - PAGE NOT FOUND</h2>
-                <a href="/" class="restart">RESTART</a>
+                <h1 id="error-title">404</h1>
+                <p role="alert">KERNEL PANIC - PAGE NOT FOUND</p>
+                <a href="/" class="restart" aria-label="Return to homepage">RESTART</a>
             </div>
-        </div>
-        <div class="panic-text prevent-select">
+        </section>
+        <aside class="panic-text prevent-select" aria-hidden="true" role="presentation">
             &lt4&gt[ 4382.138338] xhci_hcd 0000:00:14.0: WARN Set TR Deq Ptr cmd failed due to incorrect slot or ep state.
 &lt6&gt[ 4382.138677] usb 3-4.5: USB disconnect, device number 8
 &lt6&gt[ 4383.895043] .kdeconnectd-wr[1961]: segfault at c ip 00007f5f4ed251d1 sp 00007ffdc8c95500 error 4 in libQt5XcbQpa.so.5.15.11[7f5f4eced000+aa000] likely on CPU 15 (core 7, socket 0)
@@ -41,8 +41,8 @@ import Layout from "../layouts/Layout.astro";
 &lt4&gt[ 4398.103848]  ? __die+0x23/0x70
 &lt4&gt[ 4398.103852]  ? page_fault_oops+0x171/0x4e0
 &lt4&gt[ 4398.103855]  ? __pick_eevdf+0x16c/0x180
-        </div>
-    </div>
+        </aside>
+    </main>
 </Layout>
 <style>
     .panic-wrapper {

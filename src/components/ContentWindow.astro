@@ -6,27 +6,21 @@ interface Props {
 const { name, command } = Astro.props;
 ---
 
-<div class="terminal-window" id="skills">
-    <div class="terminal-header">
-        <div class="terminal-title">{name}</div>
-        <!-- TODO: Fix this -->
-        <!-- <div class="terminal-controls">
-            <div class="control-btn close"></div>
-            <div class="control-btn minimize"></div>
-            <div class="control-btn maximize"></div>
-        </div> -->
-    </div>
+<section class="terminal-window" aria-labelledby="terminal-title">
+    <header class="terminal-header">
+        <h2 id="terminal-title" class="terminal-title">{name}</h2>
+    </header>
     <div class="terminal-content">
-        <div class="prompt-container">
-            <div class="prompt">[jake@nixos MagTheDev.github.io]$</div>
-            <div class="command">{command}</div>
+        <div class="prompt-container" aria-hidden="true">
+            <span class="prompt">[jake@nixos MagTheDev.github.io]$</span>
+            <span class="command">{command}</span>
         </div>
 
-        <div class="content-container">
+        <div class="content-container" role="region" aria-label={`Content for ${name}`}>
             <slot />
         </div>
     </div>
-</div>
+</section>
 
 <style>
     .terminal-window {

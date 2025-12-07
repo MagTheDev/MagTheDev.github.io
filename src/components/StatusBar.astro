@@ -1,19 +1,60 @@
 ---
-
+let statuses = [
+        "Built out of frustration. Perfected out of spite.",
+        "Shipping code before the Paintress takes another year",
+        "Bad UX is a personal insult (and I hold grudges)",
+        "Ships slowly. Ships correctly. Sue me.",
+        "\"That's impossible\" is my favorite motivational speech",
+        "Every line matters. Fight me on this.",
+        "Built EduFix because mediocrity offends me",
+        "Quality over speed. I said what I said.",
+        "Will tell you the truth. Probably with sarcasm.",
+        "Free as in freedom, petty as in vengeance",
+        "See broken system. Get annoyed. Fix it anyway.",
+        "Still here despite the countdown",
+        "Your code could be better. Just saying.",
+        "NixOS user: masochism with benefits",
+        "If it works but it's ugly, it's broken",
+        "Strong opinions, weakly held, violently defended",
+        "Perfectionism: it's a lifestyle choice",
+        "Another year survived. Another project shipped.",
+        "Obsessed with details you didn't know existed",
+        "Lock-in is for cowards",
+        "They said \"good enough.\" I said \"not to me.\"",
+        "Debugging until the clock strikes midnight"
+    ]
+    let modes = [
+        "Detail-obsessed",
+        "Perfectionist",
+        "Unfiltered",
+        "Spite-powered",
+        "Brutally honest",
+        "Quality-obsessed",
+        "Uncompromising",
+        "Pedantic and proud",
+        "Sarcasm: default mode",
+        "Living on borrowed time",
+        "No shortcuts",
+        "Countdown: ignored",
+        "Opinionated",
+        "Maximum snark",
+        "Still not impressed"
+    ]
 ---
 
-<div class="status-bar">
+<header class="status-bar" role="banner" aria-label="Site status">
     <div class="container">
         <div class="status-container">
-            <div class="header-left">
-                <span class="gray">PORTFOLIO_INIT:</span> LOADED(100%)
-            </div>
-            <div class="header-right">
-                <span class="visitors">VISITORS_ONLINE: 1</span>
-            </div>
+            <p class="header-left">
+                <span class="gray">Status:</span>
+                <span aria-live="polite">{statuses[Math.floor(Math.random() * statuses.length)]}</span>
+                <span aria-hidden="true">&nbsp;|&nbsp;</span>
+                <span class="gray">Mode:</span>
+                <span aria-live="polite">{modes[Math.floor(Math.random() * modes.length)]}</span>
+            </p>
         </div>
     </div>
-</div>
+</header>
 
 <style>
     .status-bar {
@@ -31,7 +72,7 @@
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 0px;
     }
 
     .status-container {
@@ -48,3 +89,6 @@
     }
 </style>
     
+<script>
+    
+</script>

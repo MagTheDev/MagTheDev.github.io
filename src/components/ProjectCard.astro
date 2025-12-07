@@ -14,22 +14,22 @@ interface Link {
 const {name, tech, links, isLast = false} = Astro.props
 ---
 
-<div class="project-item">
-    <span class="project-name">
-        {isLast ? "└──" : "├──"}
+<article class="project-item" aria-labelledby={`project-${name.replace(/[^a-zA-Z0-9]/g, '')}`}>
+    <h3 class="project-name" id={`project-${name.replace(/[^a-zA-Z0-9]/g, '')}`}>
+        <span aria-hidden="true">{isLast ? "└──" : "├──"}</span>
         {name}
-    </span>
+    </h3>
     <div class="project-desc">
         <slot/>
     </div>
-    <div class="tech-stack">
+    <p class="tech-stack">
         <span>Tech: </span>
         {tech.map((item, idx, _) => ( <span>{item}{idx == (tech.length-1) ? '' : ','}</span> ))}
-    </div>
-    <div class="links">
-        {links.map(link => ( <a href={link.url} class="link">[{link.name}]</a> ))}
-    </div>
-</div>
+    </p>
+    <nav class="links" aria-label={`Links for ${name}`}>
+        {links.map(link => ( <a href={link.url} class="link" rel="noopener noreferrer">[{link.name}]<span class="visually-hidden"> (opens in new context)</span></a> ))}
+    </nav>
+</article>
 
 <style>
     .project-item {

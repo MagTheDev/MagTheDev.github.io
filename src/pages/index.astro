@@ -8,41 +8,42 @@ import SkillGroup from "../components/SkillGroup.astro";
 ---
 
 <Layout title="MagTheDev">
-    <StatusBar />
+    <!-- <StatusBar /> -->
 
-    <div class="main-content">
+    <main id="main-content" class="main-content" role="main">
         <div class="container">
-            <div class="hero-section">
+            <section class="hero-section" aria-labelledby="hero-title">
                 <div class="banner-container">
                     <Banner />
                 </div>
                 <div class="hero-text">
-                    <div>
+                    <p aria-hidden="true">
                         <span class="prompt">
                             [jake@nixos MagTheDev.github.io]$
                         </span>
                         <span class="command">whoami</span>
-                    </div>
+                    </p>
                     <div class="output">
-                        <span class="output-text"
-                            >Full-Stack Developer & System Administrator</span
+                        <h1 id="hero-title" class="output-text"
+                            >Full-Stack Developer & System Administrator</h1
                         >
-                        <span class="blink"
+                        <p class="blink"
                             >Specializing in robust applications and scalable
-                            infrastructure</span
+                            infrastructure</p
                         >
                     </div>
                 </div>
-            </div>
-            <nav class="nav-menu">
+            </section>
+            <nav class="nav-menu" aria-label="Main navigation">
                 <a href="#skills" class="nav-item">./skills</a>
                 <a href="#projects" class="nav-item">./projects</a>
                 <a href="#about" class="nav-item">./about</a>
             </nav>
 
             <!-- Windows -->
+            <section id="skills" aria-label="Skills section">
             <ContentWindow name="skills.sh" command="cat ./skills-*.md">
-                <div class="skills-grid" id="skills">
+                <div class="skills-grid">
                     <SkillGroup
                         name="development/"
                         items={[
@@ -72,8 +73,10 @@ import SkillGroup from "../components/SkillGroup.astro";
                     />
                 </div>
             </ContentWindow>
+            </section>
+            <section id="projects" aria-label="Projects section">
             <ContentWindow name="projects.sh" command="ls -al ./projects/">
-                <div class="projects-container" id="projects">
+                <div class="projects-container">
                     <ProjectCard
                         name="adventná-výzva/"
                         tech={["React", "SpringBoot", "PostgresQL"]}
@@ -114,8 +117,9 @@ import SkillGroup from "../components/SkillGroup.astro";
                     </ProjectCard>
                 </div>
             </ContentWindow>
+            </section>
         </div>
-    </div>
+    </main>
 </Layout>
 
 <style>

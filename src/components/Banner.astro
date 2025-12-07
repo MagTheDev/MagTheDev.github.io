@@ -1,7 +1,9 @@
 ---
 ---
 
-<div class="banner-ascii">
+<div class="crt-container">
+    <div class="crt-effect">
+        <div class="banner-ascii">
 __/\\\\\\\\\\\\_____/\\\\\\\\\\\\\\\__/\\\________/\\\__/\\\\\\\\\\\\\\\__/\\\___________________/\\\\\_______/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\____/\\\\\\\\\_____        
  _\/\\\////////\\\__\/\\\///////////__\/\\\_______\/\\\_\/\\\///////////__\/\\\_________________/\\\///\\\____\/\\\/////////\\\_\/\\\///////////___/\\\///////\\\___       
   _\/\\\______\//\\\_\/\\\_____________\//\\\______/\\\__\/\\\_____________\/\\\_______________/\\\/__\///\\\__\/\\\_______\/\\\_\/\\\_____________\/\\\_____\/\\\___      
@@ -20,24 +22,99 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
       __/\\\______\//\\\________\/\\\________/\\\______\//\\\__\/\\\_______\/\\\_\/\\\_______/\\\__\/\\\_____________\/\\\_____\/\\\_____\/\\\__\//\\\\\\_                 
        _\///\\\\\\\\\\\/_________\/\\\_______\///\\\\\\\\\\\/___\/\\\_______\/\\\_\/\\\\\\\\\\\\/___\/\\\_____________\/\\\__/\\\\\\\\\\\_\/\\\___\//\\\\\_                
         ___\///////////___________\///__________\///////////_____\///________\///__\////////////_____\///______________\///__\///////////__\///_____\/////__               
+        </div>
+        <div class="scanlines"></div>
+    </div>
 </div>
 
 <style is:inline>
+    .crt-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .crt-effect {
+        position: relative;
+        animation: crt-flicker 0.15s infinite;
+        display: flex;
+        justify-content: center;
+    }
+
+    @keyframes crt-flicker {
+        0% { opacity: 0.97; }
+        5% { opacity: 0.95; }
+        10% { opacity: 0.98; }
+        15% { opacity: 0.94; }
+        20% { opacity: 0.99; }
+        25% { opacity: 0.93; }
+        30% { opacity: 0.97; }
+        35% { opacity: 0.95; }
+        40% { opacity: 0.94; }
+        45% { opacity: 0.98; }
+        50% { opacity: 0.95; }
+        55% { opacity: 0.99; }
+        60% { opacity: 0.93; }
+        65% { opacity: 0.96; }
+        70% { opacity: 0.98; }
+        75% { opacity: 0.94; }
+        80% { opacity: 0.97; }
+        85% { opacity: 0.95; }
+        90% { opacity: 0.98; }
+        95% { opacity: 0.93; }
+        100% { opacity: 0.97; }
+    }
+
+    /* Scanlines overlay */
+    .scanlines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.18) 0px,
+            rgba(0, 0, 0, 0.18) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+        z-index: 10;
+    }
 
     .banner-ascii {
         font-family: "Berkeley Mono", "Courier New", monospace;
         font-size: var(--font-size-small);
-        color: var(--color-text);
+        color: transparent;
         white-space: pre;
         margin: 0.5rem;
         transition: color 0.3s ease-in-out;
+        /* Phosphor RGB subpixel simulation applied to text */
+        background: repeating-linear-gradient(
+            90deg,
+            rgba(255, 180, 180, 1) 0px,
+            rgba(180, 255, 180, 1) 1px,
+            rgba(180, 180, 255, 1) 2px,
+            var(--color-text) 3px
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 
+            0 0 3px var(--color-text),
+            0 0 6px rgba(255, 255, 255, 0.15),
+            0 0 10px rgba(255, 255, 255, 0.05);
+        position: relative;
+        z-index: 1;
     }
+
     @media (max-width: 1300px) {
         .banner-ascii {
             font-size: var(--font-size-xs);
         }
     }
-
 
     @media (max-width: 510px) {
         .banner-ascii {
@@ -46,12 +123,17 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
         }
     }
 
-
     .banner-ascii .underscore {
         color: var(--color-muted);
         transition: color 0.3s ease-in-out;
     }
 
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        .crt-effect {
+            animation: none;
+        }
+    }
 </style>
 
 <script>

@@ -150,6 +150,26 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
         const originalText = asciiArt.textContent;
         const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\\';
         
+        // Track visibility and scroll state
+        let isInView = true;
+        let isScrolling = false;
+        let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+        
+        // IntersectionObserver to track if banner is visible
+        const observer = new IntersectionObserver((entries) => {
+            isInView = entries[0].isIntersecting;
+        }, { threshold: 0.1 });
+        observer.observe(asciiArt);
+        
+        // Detect scrolling
+        window.addEventListener('scroll', () => {
+            isScrolling = true;
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+            }, 150); // Consider scrolling stopped after 150ms of no scroll events
+        }, { passive: true });
+        
         function glitch() {
             const text = originalText.split('');
             const glitchLength = Math.floor(Math.random() * 30) + 15; // 15-45 chars
@@ -196,8 +216,11 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
         function scheduleGlitch() {
             const delay = Math.random() * 4000 + 2000;
             setTimeout(() => {
-                // Respect reduced motion preference
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                // Only glitch if: not scrolling, in view, motion allowed, tab visible
+                if (!isScrolling && 
+                    isInView && 
+                    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+                    document.visibilityState === 'visible') {
                     glitch();
                 }
                 scheduleGlitch();

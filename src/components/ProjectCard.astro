@@ -27,7 +27,7 @@ const {name, tech, links, isLast = false} = Astro.props
         {tech.map((item, idx, _) => ( <span>{item}{idx == (tech.length-1) ? '' : ','}</span> ))}
     </p>
     <nav class="links" aria-label={`Links for ${name}`}>
-        {links.map(link => ( <a href={link.url} class="link" rel="noopener noreferrer">[{link.name}]<span class="visually-hidden"> (opens in new context)</span></a> ))}
+        {links.map(link => ( <a href={link.url} class="link" rel="noopener noreferrer">[{link.name}]</a> ))}
     </nav>
 </article>
 

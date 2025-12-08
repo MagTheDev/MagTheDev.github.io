@@ -62,3 +62,87 @@
 		outline: 2px solid var(--color-primary);
 		outline-offset: 2px;
 	}
+
+	/* ===== CRT Hover Effect ===== */
+	/* Faithful recreation of the banner CRT shader for interactive elements */
+
+	@keyframes crt-hover-flicker {
+		0% { opacity: 0.97; }
+		5% { opacity: 0.95; }
+		10% { opacity: 0.98; }
+		15% { opacity: 0.94; }
+		20% { opacity: 0.99; }
+		25% { opacity: 0.93; }
+		30% { opacity: 0.97; }
+		35% { opacity: 0.95; }
+		40% { opacity: 0.94; }
+		45% { opacity: 0.98; }
+		50% { opacity: 0.95; }
+		55% { opacity: 0.99; }
+		60% { opacity: 0.93; }
+		65% { opacity: 0.96; }
+		70% { opacity: 0.98; }
+		75% { opacity: 0.94; }
+		80% { opacity: 0.97; }
+		85% { opacity: 0.95; }
+		90% { opacity: 0.98; }
+		95% { opacity: 0.93; }
+		100% { opacity: 0.97; }
+	}
+
+	.crt-hover {
+		position: relative;
+		display: inline-block;
+		color: var(--color-primary);
+	}
+
+	/* Scanlines overlay on hover */
+	.crt-hover::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		opacity: 0;
+		background: repeating-linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 0.18) 0px,
+			rgba(0, 0, 0, 0.18) 1px,
+			transparent 1px,
+			transparent 2px
+		);
+		z-index: 10;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.crt-hover:hover {
+		animation: crt-hover-flicker 0.15s infinite;
+		/* RGB phosphor subpixel simulation */
+		background: repeating-linear-gradient(
+			90deg,
+			rgba(255, 180, 180, 1) 0px,
+			rgba(180, 255, 180, 1) 1px,
+			rgba(180, 180, 255, 1) 2px,
+			var(--color-primary) 3px
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		/* Phosphor glow/bloom effect */
+		filter: drop-shadow(0 0 3px var(--color-primary))
+				drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+
+	}
+
+	.crt-hover:hover::after {
+		opacity: 1;
+	}
+
+	/* Reduce motion for accessibility */
+	@media (prefers-reduced-motion: reduce) {
+		.crt-hover:hover {
+			animation: none;
+		}
+	}

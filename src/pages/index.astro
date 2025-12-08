@@ -23,13 +23,13 @@ import SkillGroup from "../components/SkillGroup.astro";
                         <span class="command">whoami</span>
                     </p>
                     <div class="output">
-                        <h1 id="hero-title" class="output-text"
-                            >Full-Stack Developer & System Administrator</h1
-                        >
-                        <p class="blink"
-                            >Specializing in robust applications and scalable
-                            infrastructure</p
-                        >
+                        <h1 id="hero-title" class="output-text">
+                            Full-Stack Developer & System Administrator
+                        </h1>
+                        <p class="blink">
+                            Specializing in robust applications and scalable
+                            infrastructure
+                        </p>
                     </div>
                 </div>
             </section>
@@ -41,84 +41,117 @@ import SkillGroup from "../components/SkillGroup.astro";
 
             <!-- Windows -->
             <section id="skills" aria-label="Skills section">
-            <ContentWindow name="skills.sh" command="cat ./skills-*.md">
-                <div class="skills-grid">
-                    <SkillGroup
-                        name="development/"
-                        items={[
-                            "Rust",
-                            "Kotlin",
-                            "Javascript/Typescript",
-                            "Python",
-                            "Elixir",
-                            "Postgresql",
-                            "REST/GraphQL",
-                        ]}
-                    />
-                    <SkillGroup
-                        name="infrastructure/"
-                        items={[
-                            "Linux",
-                            "Docker",
-                            "NixPacks",
-                            "Nginx/Apache",
-                            "Kubernetes",
-                            "Github Actions",
-                        ]}
-                    />
-                    <SkillGroup
-                        name="monitoring/"
-                        items={["Prometheus", "Grafana", "Sentry"]}
-                    />
-                </div>
-            </ContentWindow>
+                <ContentWindow name="skills.sh" command="cat ./skills-*.md">
+                    <div class="skills-grid">
+                        <SkillGroup
+                            name="development/"
+                            items={[
+                                "Rust",
+                                "Kotlin",
+                                "Javascript/Typescript",
+                                "Python",
+                                "Elixir",
+                                "Postgresql",
+                                "REST/GraphQL",
+                            ]}
+                        />
+                        <SkillGroup
+                            name="infrastructure/"
+                            items={[
+                                "Linux",
+                                "Docker",
+                                "NixPacks",
+                                "Nginx/Apache",
+                                "Kubernetes",
+                                "Github Actions",
+                            ]}
+                        />
+                        <SkillGroup
+                            name="monitoring/"
+                            items={["Prometheus", "Grafana", "Sentry"]}
+                        />
+                    </div>
+                </ContentWindow>
             </section>
             <section id="projects" aria-label="Projects section">
-            <ContentWindow name="projects.sh" command="ls -al ./projects/">
-                <div class="projects-container">
-                    <ProjectCard
-                        name="adventná-výzva/"
-                        tech={["React", "SpringBoot", "PostgresQL"]}
-                        links={[
-                            {
-                                name: "GitHub",
-                                url: "https://github.com/7274-dev/AdventnaVyzva-GlobalBackend",
-                            },
-                        ]}
-                    >
-                        <strong>Adventná výzva</strong> is a playful fullstack web
-                        app created for our school to bring the spirit of Advent
-                        to life. Teachers can create daily tasks for each day of
-                        Advent, and students participate by completing them in an
-                        engaging, interactive way. The app blends festive fun with
-                        meaningful challenges, encouraging participation and community
-                        during the holiday season.
-                    </ProjectCard>
-                    <ProjectCard
-                        name="edufix/"
-                        tech={["Swift", "SwiftUI"]}
-                        links={[
-                            {
-                                name: "GitHub",
-                                url: "https://github.com/MagTheDev/EduFix",
-                            },
-                        ]}
-                        isLast
-                    >
-                        <strong>EduFix</strong> is a modern Swift-based companion
-                        app for EduPage, designed to smooth over the frustrations
-                        of an outdated academic system. Its main feature is a customizable
-                        homescreen widget that displays the current lesson in real
-                        time, giving students quick, glanceable access to their schedule.
-                        Future updates will expand functionality with tools like
-                        a grade calculator, automatic lunch selection, and more —
-                        all with a focus on usability and a clean, native iOS experience.
-                    </ProjectCard>
-                </div>
-            </ContentWindow>
+                <ContentWindow name="projects.sh" command="ls -al ./projects/">
+                    <div class="projects-container">
+                        <ProjectCard
+                            name="adventná-výzva/"
+                            tech={["React", "SpringBoot", "PostgresQL"]}
+                            links={[
+                                {
+                                    name: "GitHub",
+                                    url: "https://github.com/7274-dev/AdventnaVyzva-GlobalBackend",
+                                },
+                            ]}
+                        >
+                            <strong>Adventná výzva</strong> is a playful fullstack
+                            web app created for our school to bring the spirit of
+                            Advent to life. Teachers can create daily tasks for each
+                            day of Advent, and students participate by completing
+                            them in an engaging, interactive way. The app blends
+                            festive fun with meaningful challenges, encouraging participation
+                            and community during the holiday season.
+                        </ProjectCard>
+                        <ProjectCard
+                            name="edufix/"
+                            tech={["Swift", "SwiftUI"]}
+                            links={[
+                                {
+                                    name: "GitHub",
+                                    url: "https://github.com/MagTheDev/EduFix",
+                                },
+                            ]}
+                            isLast
+                        >
+                            <strong>EduFix</strong> is a modern Swift-based companion
+                            app for EduPage, designed to smooth over the frustrations
+                            of an outdated academic system. Its main feature is a
+                            customizable homescreen widget that displays the current
+                            lesson in real time, giving students quick, glanceable
+                            access to their schedule. Future updates will expand
+                            functionality with tools like a grade calculator, automatic
+                            lunch selection, and more — all with a focus on usability
+                            and a clean, native iOS experience.
+                        </ProjectCard>
+                    </div>
+                </ContentWindow>
             </section>
             <section id="about" aria-label="About section">
-                <ContentWindow name="about.sh" command="cat ./about-me.md"></ContentWindow>
+                <ContentWindow name="about.sh" command="cat ./about-me.md">
+                    <div class="about-content">
+                        <h2><span class="about-dimmed">#</span> Me</h2>
+                        <p>
+                            I build things when existing solutions aren't <strong><span class="about-dimmed">*</span>good
+                            enough<span class="about-dimmed">*</span>.</strong>
+                        </p>
+                        <h3><span class="about-dimmed">##</span> Who?</h3>
+                        <p>
+                            I'm a <span class="about-highlight">full-stack developer</span> and <span class="about-highlight">system administrator</span> who
+                            values freedom over convenience and quality over speed.
+                            I take my time shipping because details matter. <span class="about-dimmed">"</span>Good
+                            enough<span class="about-dimmed">"</span> isn't in my vocabulary.
+                        </p>
+                        <h3><span class="about-dimmed">##</span> Why?</h3>
+                        <p>
+                            My approach is straightforward: see a broken system, get
+                            frustrated, fix it. I'm driven by <span class="about-highlight">spite</span> as much as
+                            <span class="about-highlight">passion</span>, and I'm not afraid to rebuild something from
+                            scratch if that's what it takes to do it right. I
+                            believe in <span class="about-highlight">open source</span> and software that <strong><span class="about-dimmed">*</span>respects its
+                            users<span class="about-dimmed">*</span>.</strong>
+                        </p>
+                        <h3><span class="about-dimmed">##</span> How?</h3>
+                        <p>
+                            I work with <span class="about-highlight">Rust</span>, <span class="about-highlight">Kotlin</span>, <span class="about-highlight">TypeScript</span>, <span class="about-highlight">Python</span>, <span class="about-highlight">Elixir</span> -
+                            whatever solves the problem best. I run <span class="about-highlight">NixOS</span> because I
+                            value <span class="about-highlight">control</span> and <span class="about-highlight">reproducibility</span>, even when it's
+                            painful. I obsess over architecture that ages well and
+                            code that's honest about what it does.
+                        </p>
+                    </div>
+                </ContentWindow>
             </section>
         </div>
     </main>
@@ -215,5 +248,12 @@ import SkillGroup from "../components/SkillGroup.astro";
         flex-direction: column;
         gap: 20px;
         margin: 20px 0;
+    }
+    .about-highlight {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+    .about-dimmed {
+        color: var(--color-muted);
     }
 </style>

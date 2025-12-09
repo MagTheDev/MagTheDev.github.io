@@ -154,16 +154,29 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
         let isInView = true;
         let isScrolling = false;
         let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+        let activeGlitchInterval: ReturnType<typeof setInterval> | null = null;
         
         // IntersectionObserver to track if banner is visible
         const observer = new IntersectionObserver((entries) => {
             isInView = entries[0].isIntersecting;
-        }, { threshold: 0.1 });
+        }, { threshold: 0.8 });
         observer.observe(asciiArt);
+        
+        // Restore original text and clear any active glitch
+        function stopGlitch() {
+            if (activeGlitchInterval) {
+                clearInterval(activeGlitchInterval);
+                activeGlitchInterval = null;
+                // Restore original
+                asciiArt!.textContent = originalText;
+                asciiArt!.innerHTML = asciiArt!.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
+            }
+        }
         
         // Detect scrolling
         window.addEventListener('scroll', () => {
             isScrolling = true;
+            stopGlitch(); // Stop any ongoing glitch animation immediately
             if (scrollTimeout) clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
                 isScrolling = false;
@@ -191,10 +204,16 @@ _____/\\\\\\\\\\\____/\\\________/\\\_____/\\\\\\\\\\\_______/\\\\\\\\\_____/\\\
             const glitchFrames = Math.floor(Math.random() * 14) + 7; // 7-20 frames
             
             let frame = 0;
-            const glitchInterval = setInterval(() => {
+            activeGlitchInterval = setInterval(() => {
+                // Stop immediately if scrolling started
+                if (isScrolling) {
+                    stopGlitch();
+                    return;
+                }
                 frame++;
                 if (frame >= glitchFrames) {
-                    clearInterval(glitchInterval);
+                    clearInterval(activeGlitchInterval!);
+                    activeGlitchInterval = null;
                     // Restore original
                     asciiArt!.textContent = originalText;
                     asciiArt!.innerHTML = asciiArt!.innerHTML.replace(/_/g, '<span class="underscore">_</span>');
